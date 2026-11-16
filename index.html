@@ -6,6 +6,7 @@
 	<script>
 		(function() {
 			const scales = [0.875, 1, 1.125, 1.25];
+			if (localStorage.getItem('unstolic_theme') === 'dark') document.documentElement.dataset.theme = 'dark';
 			const scale = Number(localStorage.getItem('unstolic_text_scale'));
 			if (scales.includes(scale)) document.documentElement.style.fontSize = (scale * 100) + '%';
 		})();
@@ -95,8 +96,16 @@
 		.button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 21px; border-radius: 7px; background: var(--yellow); color: var(--blue-deep); font-weight: 800; transition: transform .18s, box-shadow .18s; }
 		.button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,210,31,.32); }
 		.button.blue { background: var(--blue); color: #fff; }
-		.hero { position: relative; overflow: hidden; color: #fff; background: var(--blue); }
-		.hero:before { content: ""; position: absolute; width: 520px; height: 520px; border: 70px solid rgba(255,255,255,.055); border-radius: 50%; right: -80px; top: -150px; }
+		.hero {
+			position: relative;
+			overflow: hidden;
+			color: #fff;
+			background:
+				radial-gradient(ellipse at 78% 34%, rgba(39,112,171,.22), transparent 36%),
+				radial-gradient(ellipse at 88% 82%, rgba(255,210,31,.045), transparent 26%),
+				radial-gradient(ellipse at 16% 108%, rgba(16,87,146,.32), transparent 42%),
+				var(--blue);
+		}
 		.hero:after { content: ""; position: absolute; height: 9px; width: 30%; bottom: 0; right: 0; background: var(--yellow); }
 		.hero-inner { position: relative; z-index: 1; min-height: 525px; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 46px; padding-top: 58px; padding-bottom: 70px; }
 		.eyebrow { color: var(--yellow); text-transform: uppercase; letter-spacing: .16em; font-weight: 800; font-size: .76rem; }
@@ -104,51 +113,17 @@
 		.hero p { color: rgba(255,255,255,.82); max-width: 570px; font-size: 1.08rem; margin: 0 0 29px; }
 		.hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
 		.hero .button.outline { color: #fff; border: 1px solid rgba(255,255,255,.42); background: transparent; }
-		.hero-art { min-height: 340px; position: relative; display: block; }
-		.hero-art:before {
-			content: "";
-			position: absolute;
-			right: -6%;
-			bottom: -10%;
-			width: min(440px, 72vw);
-			height: min(440px, 72vw);
-			border-radius: 50%;
-			background: radial-gradient(circle at center, rgba(255,255,255,.18) 0 17%, rgba(255,255,255,.06) 17.5% 31%, rgba(7,37,64,.55) 31.5% 50%, rgba(255,255,255,.02) 50.5% 100%);
-			border: 1px solid rgba(255,255,255,.08);
-			box-shadow: inset 0 0 0 12px rgba(8,27,43,.28), inset 0 0 30px rgba(255,255,255,.03);
+		.hero-art { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; pointer-events: none; z-index: 0; }
+		.hero-monogram {
+			white-space: nowrap;
+			color: #0a427b;
+			font-size: clamp(8rem, 54vw, 48rem);
+			font-weight: 900;
+			letter-spacing: -.06em;
+			line-height: .8;
+			padding-right: .06em;
 		}
-		.hero-art:after {
-			content: "";
-			position: absolute;
-			right: 16%;
-			bottom: 6%;
-			width: min(170px, 29vw);
-			height: min(170px, 29vw);
-			border-radius: 50%;
-			background: rgba(255,255,255,.9);
-			box-shadow: 0 0 0 22px rgba(255,255,255,.06);
-		}
-		.hero-badge {
-			position: absolute;
-			right: 16%;
-			bottom: 6%;
-			width: min(170px, 29vw);
-			height: min(170px, 29vw);
-			border-radius: 50%;
-			background: rgba(255,255,255,.9);
-			display: grid;
-			place-items: center;
-			overflow: hidden;
-			box-shadow: 0 0 0 22px rgba(255,255,255,.06);
-			z-index: 1;
-		}
-		.hero-badge img {
-			display: block;
-			width: 150%;
-			height: 150%;
-			object-fit: cover;
-			filter: drop-shadow(0 4px 10px rgba(7,59,115,.12));
-		}
+		.hero-inner > div:first-child { position: relative; z-index: 1; }
 		.trust-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 18px; padding: 25px 0; border-bottom: 1px solid var(--line); }
 		.trust-item { display: flex; align-items: center; gap: 12px; color: var(--blue); font-size: .9rem; font-weight: 800; }
 		.trust-item span:first-child { width: 36px; height: 36px; flex: 0 0 36px; display: grid; place-items: center; background: var(--blue-soft); border-radius: 50%; color: var(--blue); }
@@ -298,6 +273,53 @@
 		.text-settings button:disabled { cursor: not-allowed; opacity: .45; }
 		.text-size-controls output { min-width: 48px; text-align: center; font-weight: 700; }
 		.text-settings .text-size-reset { width: 100%; margin-top: 10px; }
+		.theme-setting { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; cursor: pointer; font-weight: 700; }
+		.theme-setting input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+		.theme-setting-track { position: relative; flex: 0 0 42px; height: 24px; border-radius: 999px; background: #c7d2de; transition: background .18s; }
+		.theme-setting-track:before { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform .18s; }
+		.theme-setting input:checked + .theme-setting-track { background: var(--blue); }
+		.theme-setting input:checked + .theme-setting-track:before { transform: translateX(18px); }
+		.theme-setting input:focus-visible + .theme-setting-track { outline: 3px solid rgba(255,210,31,.7); outline-offset: 2px; }
+		:root[data-theme="dark"] {
+			color-scheme: dark;
+			--white: #101821;
+			--ink: #e7edf5;
+			--muted: #a9b7c6;
+			--line: #2e3d4d;
+			--blue-soft: #1d3043;
+		}
+		:root[data-theme="dark"] header,
+		:root[data-theme="dark"] .dropdown-menu,
+		:root[data-theme="dark"] .hours-panel,
+		:root[data-theme="dark"] .card,
+		:root[data-theme="dark"] .contact-form,
+		:root[data-theme="dark"] .text-settings summary,
+		:root[data-theme="dark"] .text-settings-panel,
+		:root[data-theme="dark"] .text-settings button { background-color: #182431; }
+		:root[data-theme="dark"] header,
+		:root[data-theme="dark"] footer { border-color: var(--line); }
+		:root[data-theme="dark"] .services,
+		:root[data-theme="dark"] .car-health,
+		:root[data-theme="dark"] footer { background-color: #121c27; }
+		:root[data-theme="dark"] .text-settings,
+		:root[data-theme="dark"] .text-settings button { color: var(--ink); }
+		:root[data-theme="dark"] .brand,
+		:root[data-theme="dark"] .trust-item,
+		:root[data-theme="dark"] .branch-phone a,
+		:root[data-theme="dark"] .contact-form > p a,
+		:root[data-theme="dark"] .footer-inner strong { color: #9bc8ff; }
+		:root[data-theme="dark"] .nav-links a:not(.button):hover { color: var(--yellow); }
+		:root[data-theme="dark"] h2,
+		:root[data-theme="dark"] .card h3,
+		:root[data-theme="dark"] .health-block-heading h3,
+		:root[data-theme="dark"] .contact-form h3,
+		:root[data-theme="dark"] .contact-field label,
+		:root[data-theme="dark"] .registration { color: var(--ink); }
+		:root[data-theme="dark"] .section-heading .eyebrow,
+		:root[data-theme="dark"] .about-copy .eyebrow { color: var(--yellow); }
+		:root[data-theme="dark"] .hours-list li { border-color: var(--line); }
+		:root[data-theme="dark"] .contact-field input,
+		:root[data-theme="dark"] .contact-field textarea { background: #101821; color: var(--ink); }
 		@media (max-width: 1360px) { .topbar-inner { padding-left: 132px; } }
 		@media (max-width: 900px) {
 			.hero-inner { grid-template-columns: 1fr; gap: 10px; padding: 58px 0 46px; }
@@ -364,7 +386,7 @@
 <body>
 	<details class="text-settings">
 		<summary>Text settings</summary>
-		<div class="text-settings-panel" aria-label="Text size settings">
+		<div class="text-settings-panel" aria-label="Text and display settings">
 			<p>Text size</p>
 			<div class="text-size-controls">
 				<button type="button" data-text-size="decrease" aria-label="Decrease text size">A−</button>
@@ -372,6 +394,7 @@
 				<button type="button" data-text-size="increase" aria-label="Increase text size">A+</button>
 			</div>
 			<button class="text-size-reset" type="button" data-text-size="reset">Reset to default</button>
+			<label class="theme-setting"><span>Dark mode</span><input type="checkbox" data-theme-toggle role="switch" aria-label="Dark mode"><span class="theme-setting-track" aria-hidden="true"></span></label>
 		</div>
 	</details>
 	<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent banner">
@@ -426,7 +449,7 @@
 					<p>We provide convenient, reliable and affordable after-sales motor services in Zambia, from routine maintenance to mechanical repairs and cosmetic work.</p>
 					<div class="hero-actions"><a class="button" href="#services">Explore our services</a><a class="button outline" href="https://kwikfit.africa/" target="_blank" rel="noopener noreferrer">Visit Kwik-Fit Africa ↗</a></div>
 				</div>
-				<div class="hero-art" aria-label="Kwik-Fit automotive brand illustration"><div class="hero-badge"><img src="unstolic-logo.png" alt="Unstolic Resources Limited brand logo"></div></div>
+				<div class="hero-art" aria-hidden="true"><span class="hero-monogram">URL</span></div>
 			</div>
 		</section>
 		<div class="wrap trust-row" aria-label="Company highlights">
@@ -594,6 +617,19 @@
 				}
 			});
 			applyScale(scale);
+		})();
+	</script>
+	<script>
+		(function() {
+			const toggle = document.querySelector('[data-theme-toggle]');
+			if (!toggle) return;
+			const key = 'unstolic_theme';
+			toggle.checked = document.documentElement.dataset.theme === 'dark';
+			toggle.addEventListener('change', function() {
+				const theme = toggle.checked ? 'dark' : 'light';
+				document.documentElement.dataset.theme = theme;
+				localStorage.setItem(key, theme);
+			});
 		})();
 	</script>
 	<script>

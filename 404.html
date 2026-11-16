@@ -17,6 +17,7 @@
 	<script>
 		(function() {
 			const scales = [0.875, 1, 1.125, 1.25];
+			if (localStorage.getItem('unstolic_theme') === 'dark') document.documentElement.dataset.theme = 'dark';
 			const scale = Number(localStorage.getItem('unstolic_text_scale'));
 			if (scales.includes(scale)) document.documentElement.style.fontSize = (scale * 100) + '%';
 		})();
@@ -191,6 +192,32 @@
 		.text-settings button:disabled { cursor: not-allowed; opacity: .45; }
 		.text-size-controls output { min-width: 48px; text-align: center; font-weight: 700; }
 		.text-settings .text-size-reset { width: 100%; margin-top: 10px; }
+		.theme-setting { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; cursor: pointer; font-weight: 700; }
+		.theme-setting input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+		.theme-setting-track { position: relative; flex: 0 0 42px; height: 24px; border-radius: 999px; background: #c7d2de; transition: background .18s; }
+		.theme-setting-track:before { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform .18s; }
+		.theme-setting input:checked + .theme-setting-track { background: var(--blue); }
+		.theme-setting input:checked + .theme-setting-track:before { transform: translateX(18px); }
+		.theme-setting input:focus-visible + .theme-setting-track { outline: 3px solid rgba(255,210,31,.7); outline-offset: 2px; }
+		:root[data-theme="dark"] {
+			color-scheme: dark;
+			--ink: #e7edf5;
+			--muted: #a9b7c6;
+			--line: #2e3d4d;
+			--blue-soft: #1d3043;
+		}
+		:root[data-theme="dark"] .error-card,
+		:root[data-theme="dark"] .text-settings summary,
+		:root[data-theme="dark"] .text-settings-panel,
+		:root[data-theme="dark"] .text-settings button { background-color: #182431; }
+		:root[data-theme="dark"] .error-card { border-color: var(--line); }
+		:root[data-theme="dark"] .text-settings,
+		:root[data-theme="dark"] .text-settings button { color: var(--ink); }
+		:root[data-theme="dark"] .brand,
+		:root[data-theme="dark"] .error-code { color: #9bc8ff; }
+		:root[data-theme="dark"] h1 { color: var(--ink); }
+		:root[data-theme="dark"] .eyebrow { color: var(--yellow); }
+		:root[data-theme="dark"] .button.secondary { background: #1d3043; color: #9bc8ff; }
 		@media (max-width: 520px) {
 			body { padding: 64px 16px 24px; }
 			.error-card { padding: 28px 22px; }
@@ -205,7 +232,7 @@
 <body>
 	<details class="text-settings">
 		<summary>Text settings</summary>
-		<div class="text-settings-panel" aria-label="Text size settings">
+		<div class="text-settings-panel" aria-label="Text and display settings">
 			<p>Text size</p>
 			<div class="text-size-controls">
 				<button type="button" data-text-size="decrease" aria-label="Decrease text size">A−</button>
@@ -213,6 +240,7 @@
 				<button type="button" data-text-size="increase" aria-label="Increase text size">A+</button>
 			</div>
 			<button class="text-size-reset" type="button" data-text-size="reset">Reset to default</button>
+			<label class="theme-setting"><span>Dark mode</span><input type="checkbox" data-theme-toggle role="switch" aria-label="Dark mode"><span class="theme-setting-track" aria-hidden="true"></span></label>
 		</div>
 	</details>
 	<main class="error-card">
@@ -259,6 +287,19 @@
 				}
 			});
 			applyScale(scale);
+		})();
+	</script>
+	<script>
+		(function() {
+			const toggle = document.querySelector('[data-theme-toggle]');
+			if (!toggle) return;
+			const key = 'unstolic_theme';
+			toggle.checked = document.documentElement.dataset.theme === 'dark';
+			toggle.addEventListener('change', function() {
+				const theme = toggle.checked ? 'dark' : 'light';
+				document.documentElement.dataset.theme = theme;
+				localStorage.setItem(key, theme);
+			});
 		})();
 	</script>
 </body>
