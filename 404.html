@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#073b73">
+	<meta name="robots" content="noindex">
+	<meta name="description" content="The page you are looking for could not be found.">
+	<script>
+		(function() {
+			if (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+			if (location.protocol !== 'https:') {
+				window.location.replace('https://' + location.hostname + location.pathname + location.search + location.hash);
+			}
+		})();
+	</script>
+	<script>
+		(function() {
+			const scales = [0.875, 1, 1.125, 1.25];
+			const scale = Number(localStorage.getItem('unstolic_text_scale'));
+			if (scales.includes(scale)) document.documentElement.style.fontSize = (scale * 100) + '%';
+		})();
+	</script>
+	<title>Page not found | Unstolic Resources</title>
+	<link rel="icon" type="image/svg+xml" href="favicon.svg">
+	<style>
+		:root {
+			--blue: #073b73;
+			--blue-deep: #052d59;
+			--blue-soft: #eaf2fa;
+			--yellow: #ffd21f;
+			--ink: #12243a;
+			--muted: #627185;
+			--line: #e4eaf0;
+		}
+		* { box-sizing: border-box; }
+		body {
+			display: grid;
+			min-height: 100vh;
+			min-height: 100svh;
+			margin: 0;
+			padding: clamp(24px, 6vw, 72px);
+			place-items: center;
+			overflow-x: hidden;
+			color: var(--ink);
+			background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+			font-family: Arial, Helvetica, sans-serif;
+			line-height: 1.6;
+		}
+		a { color: inherit; text-decoration: none; }
+		.error-card {
+			position: relative;
+			width: min(100%, 720px);
+			padding: clamp(28px, 7vw, 64px);
+			overflow: hidden;
+			border: 1px solid rgba(255,255,255,.2);
+			border-radius: 22px;
+			background: #fff;
+			box-shadow: 0 24px 70px rgba(0,0,0,.2);
+		}
+		.error-card::after {
+			position: absolute;
+			right: -115px;
+			bottom: -180px;
+			width: 340px;
+			height: 340px;
+			border: 44px solid rgba(7,59,115,.05);
+			border-radius: 50%;
+			content: "";
+			pointer-events: none;
+		}
+		.brand {
+			position: relative;
+			z-index: 1;
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+			color: var(--blue);
+			font-size: .9rem;
+			font-weight: 800;
+			line-height: 1.2;
+		}
+		.brand img { display: block; width: 42px; height: 42px; object-fit: cover; }
+		.brand small {
+			display: block;
+			margin-top: 4px;
+			color: var(--muted);
+			font-size: .68rem;
+			letter-spacing: .12em;
+		}
+		.error-code {
+			margin: clamp(28px, 6vw, 48px) 0 0;
+			color: var(--blue);
+			font-size: clamp(5rem, 24vw, 10rem);
+			font-weight: 900;
+			letter-spacing: -.09em;
+			line-height: .9;
+		}
+		.eyebrow {
+			margin: 22px 0 6px;
+			color: #a87800;
+			font-size: .8rem;
+			font-weight: 800;
+			letter-spacing: .14em;
+			text-transform: uppercase;
+		}
+		h1 {
+			position: relative;
+			z-index: 1;
+			margin: 0;
+			color: var(--blue-deep);
+			font-size: clamp(1.8rem, 6vw, 2.8rem);
+			letter-spacing: -.04em;
+			line-height: 1.12;
+		}
+		.message {
+			position: relative;
+			z-index: 1;
+			max-width: 520px;
+			margin: 14px 0 26px;
+			color: var(--muted);
+		}
+		.actions {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+		}
+		.button {
+			display: inline-flex;
+			min-height: 48px;
+			align-items: center;
+			justify-content: center;
+			padding: 0 20px;
+			border: 1px solid var(--blue);
+			border-radius: 7px;
+			background: var(--blue);
+			color: #fff;
+			font-weight: 800;
+			transition: transform .18s, box-shadow .18s, background .18s;
+		}
+		.button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(7,59,115,.2); }
+		.button.secondary { background: #fff; color: var(--blue); }
+		.button.secondary:hover { background: var(--blue-soft); }
+		.text-settings {
+			position: fixed;
+			top: max(12px, env(safe-area-inset-top));
+			left: max(12px, env(safe-area-inset-left));
+			z-index: 2;
+			color: var(--blue-deep);
+			font: 14px/1.4 Arial, Helvetica, sans-serif;
+		}
+		.text-settings summary {
+			cursor: pointer;
+			list-style: none;
+			padding: 9px 12px;
+			border: 1px solid rgba(7,59,115,.16);
+			border-radius: 9px;
+			background: #fff;
+			box-shadow: 0 4px 14px rgba(5,45,89,.14);
+			font-weight: 800;
+		}
+		.text-settings summary::-webkit-details-marker { display: none; }
+		.text-settings summary:hover, .text-settings summary:focus-visible { background: var(--blue-soft); }
+		.text-settings-panel {
+			position: absolute;
+			top: calc(100% + 8px);
+			left: 0;
+			width: 220px;
+			padding: 14px;
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			background: #fff;
+			box-shadow: 0 12px 30px rgba(5,45,89,.18);
+		}
+		.text-settings-panel p { margin: 0 0 10px; font-weight: 800; }
+		.text-size-controls { display: flex; align-items: center; gap: 8px; }
+		.text-settings button {
+			min-height: 38px;
+			padding: 0 11px;
+			border: 1px solid var(--line);
+			border-radius: 7px;
+			background: #fff;
+			color: var(--blue-deep);
+			cursor: pointer;
+			font: inherit;
+			font-weight: 800;
+		}
+		.text-settings button:hover:not(:disabled) { background: var(--blue-soft); }
+		.text-settings button:disabled { cursor: not-allowed; opacity: .45; }
+		.text-size-controls output { min-width: 48px; text-align: center; font-weight: 700; }
+		.text-settings .text-size-reset { width: 100%; margin-top: 10px; }
+		@media (max-width: 520px) {
+			body { padding: 64px 16px 24px; }
+			.error-card { padding: 28px 22px; }
+			.actions { flex-direction: column; }
+			.button { width: 100%; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+		}
+	</style>
+</head>
+<body>
+	<details class="text-settings">
+		<summary>Text settings</summary>
+		<div class="text-settings-panel" aria-label="Text size settings">
+			<p>Text size</p>
+			<div class="text-size-controls">
+				<button type="button" data-text-size="decrease" aria-label="Decrease text size">A−</button>
+				<output aria-live="polite" aria-atomic="true">100%</output>
+				<button type="button" data-text-size="increase" aria-label="Increase text size">A+</button>
+			</div>
+			<button class="text-size-reset" type="button" data-text-size="reset">Reset to default</button>
+		</div>
+	</details>
+	<main class="error-card">
+		<a class="brand" href="index.html" aria-label="Unstolic Resources home">
+			<img src="unstolic-logo.png" alt="Unstolic Resources Limited logo">
+			<span>UNSTOLIC<small>RESOURCES LIMITED</small></span>
+		</a>
+		<p class="error-code" aria-hidden="true">404</p>
+		<p class="eyebrow">Page not found</p>
+		<h1>We couldn't find that page.</h1>
+		<p class="message">The link may be outdated, or the address may have been entered incorrectly. Let's get you back on the road.</p>
+		<div class="actions">
+			<a class="button" href="index.html">Return to homepage</a>
+			<a class="button secondary" href="index.html#services">Explore our services</a>
+		</div>
+	</main>
+	<script>
+		(function() {
+			const scales = [0.875, 1, 1.125, 1.25];
+			const settings = document.querySelector('.text-settings');
+			const output = settings.querySelector('output');
+			const decrease = settings.querySelector('[data-text-size="decrease"]');
+			const increase = settings.querySelector('[data-text-size="increase"]');
+			const key = 'unstolic_text_scale';
+			let scale = Number(localStorage.getItem(key));
+			if (!scales.includes(scale)) scale = 1;
+			function applyScale(nextScale) {
+				scale = nextScale;
+				document.documentElement.style.fontSize = (scale * 100) + '%';
+				localStorage.setItem(key, String(scale));
+				output.textContent = Math.round(scale * 100) + '%';
+				decrease.disabled = scale === scales[0];
+				increase.disabled = scale === scales[scales.length - 1];
+			}
+			settings.addEventListener('click', function(event) {
+				const button = event.target.closest('[data-text-size]');
+				if (!button) return;
+				const action = button.getAttribute('data-text-size');
+				if (action === 'reset') {
+					applyScale(1);
+				} else {
+					const index = scales.indexOf(scale);
+					applyScale(scales[index + (action === 'increase' ? 1 : -1)]);
+				}
+			});
+			applyScale(scale);
+		})();
+	</script>
+</body>
+</html>

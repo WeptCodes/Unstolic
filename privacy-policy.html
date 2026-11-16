@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function() {
+      const scales = [0.875, 1, 1.125, 1.25];
+      const scale = Number(localStorage.getItem('unstolic_text_scale'));
+      if (scales.includes(scale)) document.documentElement.style.fontSize = (scale * 100) + '%';
+    })();
+  </script>
+  <title>Privacy Policy | Unstolic Resources</title>
+  <meta name="description" content="Privacy policy for Unstolic Resources Limited, a Kwik-Fit franchisee in Zambia.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    (function() {
+      if (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+      if (location.protocol !== 'https:') {
+        window.location.replace('https://' + location.hostname + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
+  <style>
+    :root {
+      --blue: #073b73;
+      --blue-deep: #052d59;
+      --yellow: #ffd21f;
+      --white: #fff;
+      --ink: #12243a;
+      --muted: #627185;
+      --line: #e4eaf0;
+      --blue-soft: #eaf2fa;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      color: var(--ink);
+      background: #f6f9fc;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    body.page-ready { opacity: 1; transform: none; }
+    body.page-exit { opacity: 0; transform: translateY(-12px); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      body { transition: none; opacity: 1; transform: none; }
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1100px, calc(100% - clamp(28px, 6vw, 64px))); margin: auto; }
+    .topbar {
+      background: var(--blue-deep);
+      color: #fff;
+      font-size: .8rem;
+      padding: 8px 0;
+    }
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .topbar strong { color: var(--yellow); }
+    header {
+      background: #fff;
+      border-bottom: 1px solid rgba(7,59,115,.08);
+    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .nav-item { position: relative; }
+    .nav-item.dropdown:hover .dropdown-menu,
+    .nav-item.dropdown:focus-within .dropdown-menu {
+      opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    .dropdown-menu {
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      position: absolute; top: calc(100% + 18px); left: 0; min-width: 190px;
+      background: #fff; border: 1px solid var(--line); border-radius: 12px;
+      padding: 10px 0; box-shadow: 0 18px 34px rgba(7,59,115,.12);
+      transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
+    }
+    .dropdown-menu a {
+      display: block; padding: 10px 18px; color: var(--ink); font-weight: 700;
+    }
+    .dropdown-menu a:hover { background: var(--blue-soft); color: var(--blue); }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px 12px 12px 3px;
+      background: var(--yellow);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .brand-mark img { width: 165%; height: 165%; max-width: none; object-fit: cover; }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .67rem;
+      letter-spacing: .12em;
+      margin-top: 4px;
+    }
+    .page-hero {
+      background: linear-gradient(135deg, var(--blue) 0%, #0b4e8f 100%);
+      color: #fff;
+      padding: 60px 0 46px;
+    }
+    .page-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -.04em;
+    }
+    .page-hero p {
+      margin: 0;
+      max-width: 670px;
+      color: rgba(255,255,255,.82);
+      font-size: 1.08rem;
+    }
+    main { padding: clamp(28px, 5vw, 42px) 0 clamp(48px, 8vw, 80px); }
+    .policy-shell {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 30px rgba(7,59,115,.04);
+      padding: clamp(22px, 3.5vw, 36px) clamp(18px, 3vw, 32px);
+    }
+    .policy-shell h2 {
+      color: var(--blue-deep);
+      font-size: 1.5rem;
+      margin: 30px 0 12px;
+      letter-spacing: -.03em;
+    }
+    .policy-shell h2:first-child { margin-top: 0; }
+    .policy-shell p,
+    .policy-shell li {
+      color: var(--ink);
+      font-size: 1rem;
+    }
+    .policy-shell ul {
+      margin: 0 0 0 20px;
+      padding: 0;
+    }
+    .policy-shell a {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+    .muted {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    footer {
+      background: #f5f7fa;
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .cookie-banner {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+      display: none; background: rgba(5,45,89,.96); color: #fff;
+      border-top: 1px solid rgba(255,255,255,.15); box-shadow: 0 -12px 28px rgba(0,0,0,.12);
+    }
+    .cookie-banner.visible { display: block; }
+    .cookie-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      padding: 16px 0;
+    }
+    .cookie-copy { max-width: 780px; }
+    .cookie-copy strong { color: var(--yellow); }
+    .cookie-copy p { margin: 6px 0 0; color: rgba(255,255,255,.8); }
+    .cookie-copy a { color: #fff; text-decoration: underline; }
+    .cookie-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .cookie-options {
+      display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .cookie-banner.expanded .cookie-options { display: block; }
+    .cookie-option {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 10px; color: rgba(255,255,255,.92); font-weight: 700;
+    }
+    .cookie-option input { accent-color: var(--yellow); width: 16px; height: 16px; }
+    .cookie-option span { color: rgba(255,255,255,.7); font-weight: 500; }
+    .cookie-btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 42px;
+      padding: 0 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: 800;
+    }
+    .cookie-btn.primary { background: var(--yellow); color: var(--blue-deep); }
+    .cookie-btn.secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.25); }
+    .text-settings {
+      position: fixed;
+      top: max(12px, env(safe-area-inset-top));
+      left: max(12px, env(safe-area-inset-left));
+      z-index: 60;
+      color: var(--blue-deep);
+      font: 14px/1.4 Arial, Helvetica, sans-serif;
+    }
+    .text-settings summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 9px 12px;
+      border: 1px solid rgba(7,59,115,.16);
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(5,45,89,.14);
+      font-weight: 800;
+    }
+    .text-settings summary::-webkit-details-marker { display: none; }
+    .text-settings summary:hover, .text-settings summary:focus-visible { background: var(--blue-soft); }
+    .text-settings-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 220px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(5,45,89,.18);
+    }
+    .text-settings-panel p { margin: 0 0 10px; font-weight: 800; }
+    .text-size-controls { display: flex; align-items: center; gap: 8px; }
+    .text-settings button {
+      min-height: 38px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--blue-deep);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+    }
+    .text-settings button:hover:not(:disabled) { background: var(--blue-soft); }
+    .text-settings button:disabled { cursor: not-allowed; opacity: .45; }
+    .text-size-controls output { min-width: 48px; text-align: center; font-weight: 700; }
+    .text-settings .text-size-reset { width: 100%; margin-top: 10px; }
+    @media (max-width: 1360px) { .topbar-inner { padding-left: 132px; } }
+    @media (max-width: 850px) {
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 0 14px;
+        gap: 12px;
+      }
+      .brand { justify-content: center; }
+      .nav-links { justify-content: center; }
+    }
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 28px, 560px); }
+      .topbar-inner {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 4px;
+      }
+      .topbar-inner span:last-child { display: none; }
+      .nav { min-height: 68px; }
+      .brand {
+        justify-content: center;
+        font-size: .8rem;
+      }
+      .brand small { letter-spacing: .08em; }
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+      }
+      .nav-links a { font-size: .82rem; }
+      .page-hero { padding: 48px 0 36px; }
+      .page-hero h1 { font-size: clamp(2rem, 12vw, 3rem); }
+      .policy-shell { padding: 24px 18px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .cookie-inner { flex-direction: column; align-items: stretch; }
+      .cookie-actions { width: 100%; }
+      .cookie-btn { flex: 1 1 auto; }
+    }
+  </style>
+</head>
+<body>
+  <details class="text-settings">
+    <summary>Text settings</summary>
+    <div class="text-settings-panel" aria-label="Text size settings">
+      <p>Text size</p>
+      <div class="text-size-controls">
+        <button type="button" data-text-size="decrease" aria-label="Decrease text size">A−</button>
+        <output aria-live="polite" aria-atomic="true">100%</output>
+        <button type="button" data-text-size="increase" aria-label="Increase text size">A+</button>
+      </div>
+      <button class="text-size-reset" type="button" data-text-size="reset">Reset to default</button>
+    </div>
+  </details>
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent banner">
+    <div class="wrap">
+      <div class="cookie-inner">
+        <div class="cookie-copy">
+          <strong>Cookies</strong>
+          <p>We use cookies to improve the site experience and understand how visitors use our website. <a href="privacy-policy.html">Learn more in our Privacy Policy.</a></p>
+        </div>
+        <div class="cookie-actions">
+          <button class="cookie-btn secondary" type="button" data-cookie-choice="customise">Customise</button>
+          <button class="cookie-btn secondary" type="button" data-cookie-choice="reject">Reject</button>
+          <button class="cookie-btn primary" type="button" data-cookie-choice="accept">Accept all</button>
+        </div>
+      </div>
+      <div class="cookie-options">
+        <label class="cookie-option"><input type="checkbox" checked disabled> Necessary <span>Required for the site to work correctly</span></label>
+        <label class="cookie-option"><input type="checkbox" name="analytics"> Analytics <span>Help us understand how visitors use the site</span></label>
+        <label class="cookie-option"><input type="checkbox" name="marketing"> Marketing <span>Used for relevant promotions and campaigns</span></label>
+        <div class="cookie-actions" style="margin-top:12px; justify-content:flex-end;">
+          <button class="cookie-btn primary" type="button" data-cookie-choice="save">Save preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span><strong>UNSTOLIC RESOURCES LIMITED</strong> &nbsp;·&nbsp; Kwik-Fit franchisee in Zambia</span>
+      <span>Automotive care · Maintenance · Supply</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Unstolic Resources home">
+        <span class="brand-mark"><img src="unstolic-logo.png" alt="Unstolic Resources Limited logo"></span>
+        <span>UNSTOLIC<small>RESOURCES LIMITED</small></span>
+      </a>
+      <div class="nav-links">
+        <div class="nav-item dropdown">
+          <a href="index.html">Home</a>
+          <div class="dropdown-menu" aria-label="Home shortcuts">
+            <a href="index.html#services">What we do</a>
+            <a href="index.html#about">About us</a>
+          </div>
+        </div>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms & Conditions</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Privacy Policy</h1>
+      <p>At Unstolic Resources Limited, we respect your privacy and are committed to protecting the personal information you share with us.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="wrap policy-shell">
+      <p class="muted">Effective date: 16 November 2026</p>
+
+      <h2>1. Who we are</h2>
+      <p>Unstolic Resources Limited is a registered company in Zambia operating as a Kwik-Fit franchisee. We provide automotive care, maintenance, fleet servicing, supply and related services. This Privacy Policy explains how we collect, use, protect and share personal information when you interact with us, including through our website, phone, email, in-person visits, or other business contacts.</p>
+
+      <h2>2. Information we may collect</h2>
+      <p>We may collect personal information when you:</p>
+      <ul>
+        <li>Contact us through our website, including the contact form, phone, email or social media channels</li>
+        <li>Request a service, quote, booking, or support enquiry</li>
+        <li>Visit our premises or speak with our staff</li>
+        <li>Provide information as part of a vehicle servicing, fleet management or business relationship</li>
+        <li>Use cookies or analytics tools on our website</li>
+      </ul>
+      <p>This may include your name, address, phone number, email address, company name, vehicle details, service history, payment details, and any other information necessary to provide services or respond to requests.</p>
+
+      <h2>3. How we use your information</h2>
+      <p>We use personal information to:</p>
+      <ul>
+        <li>Provide automotive care, maintenance, supply and fleet support services</li>
+        <li>Respond to enquiries, bookings, quotations and support requests</li>
+        <li>Manage customer and fleet records</li>
+        <li>Process payments and maintain financial records</li>
+        <li>Improve our service quality, operations and website experience</li>
+        <li>Comply with legal, regulatory and tax requirements</li>
+        <li>Protect against fraud, misuse and security threats</li>
+      </ul>
+
+      <h2>4. Legal basis for processing</h2>
+      <p>We process personal information on the basis that it is necessary for:</p>
+      <ul>
+        <li>Contract performance and the provision of goods or services</li>
+        <li>Our legitimate business interests, where those interests are balanced against your rights</li>
+        <li>Legal and regulatory compliance</li>
+        <li>Your consent where required, such as for marketing or optional communications</li>
+      </ul>
+
+      <h2>5. Cookies and website analytics</h2>
+      <p>Our website may use cookies and similar technologies to improve usability, understand visitor behaviour, and support digital analytics. Cookies can help us remember preferences, measure site performance and understand which pages are useful to visitors.</p>
+      <p>You can control cookies through your browser settings. Please note that disabling cookies may affect some website functionality.</p>
+
+      <h2>6. Sharing information</h2>
+      <p>We do not sell personal information. We may share information with:</p>
+      <ul>
+        <li>Our staff and authorised service providers, where this is necessary to deliver our services</li>
+        <li>Website hosting and form-processing providers, including Netlify, to receive and manage contact form submissions</li>
+        <li>Financial institutions or payment processors for billing and payments</li>
+        <li>Professional advisers, auditors and legal representatives</li>
+        <li>Authorities or regulators where required by law</li>
+        <li>Third parties where required to protect our rights, property or safety, or that of others</li>
+      </ul>
+      <p>Where we engage third-party service providers, we require them to handle information in a secure and lawful manner.</p>
+
+      <h2>7. International transfer</h2>
+      <p>Some information may be processed outside Zambia when necessary for operational or technical support. We take reasonable steps to ensure that such transfers are protected by appropriate safeguards and handled in compliance with applicable privacy laws.</p>
+
+      <h2>8. Data security</h2>
+      <p>We take reasonable precautions to protect personal information against loss, misuse, unauthorised access, disclosure or alteration. These measures include restricted access, secure systems, and operational controls. However, no internet-based service can be completely risk-free, and we cannot guarantee absolute security.</p>
+
+      <h2>9. Retention</h2>
+      <p>We retain personal information only for as long as necessary to fulfil the purposes described in this policy, or as required by law, contractual obligations, accounting or regulatory requirements.</p>
+
+      <h2>10. Your rights</h2>
+      <p>Depending on applicable law, you may have the right to:</p>
+      <ul>
+        <li>Request access to the personal information we hold about you</li>
+        <li>Request correction of inaccurate or incomplete information</li>
+        <li>Request deletion of personal information, subject to legal and operational requirements</li>
+        <li>Object to or restrict processing of your information</li>
+        <li>Withdraw consent where consent is the legal basis for processing</li>
+        <li>Request information about the source of personal data where it was not collected directly from you</li>
+      </ul>
+      <p>To exercise these rights, please contact us using the details below.</p>
+
+      <h2>11. Children’s privacy</h2>
+      <p>Our services are generally intended for adults and businesses. We do not knowingly collect personal information from children without appropriate safeguards or parental consent where required by law.</p>
+
+      <h2>12. Third-party links</h2>
+      <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of those websites. Please review the privacy notices of any third-party sites you visit.</p>
+
+      <h2>13. Policy updates</h2>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements or business operations. Any changes will be posted on this page with an updated effective date.</p>
+
+      <h2>14. Contact us</h2>
+      <p>If you have questions about this Privacy Policy, requests relating to your personal information, or concerns about how we handle your data, please contact:</p>
+      <p><strong>Unstolic Resources Limited</strong><br>
+      Kwik-Fit franchisee in Zambia<br>
+      Plot 696 Kalambo Road, Lusaka, Zambia<br>
+      Email: <a href="mailto:sales@unstolic.com">sales@unstolic.com</a><br>
+      Kalambo Road: <a href="tel:+260955938927">0955 938927</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span><strong>Unstolic Resources Limited</strong> &nbsp;·&nbsp; Kwik-Fit franchisee in Zambia</span>
+      <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-and-conditions.html">Terms & Conditions</a></span>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      const key = 'unstolic_cookie_consent';
+      const banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      function setConsent(choice) {
+        const payload = { necessary: true };
+        if (choice === 'accept') {
+          payload.analytics = true;
+          payload.marketing = true;
+        } else if (choice === 'reject') {
+          payload.analytics = false;
+          payload.marketing = false;
+        } else {
+          payload.analytics = !!document.querySelector('[name="analytics"]').checked;
+          payload.marketing = !!document.querySelector('[name="marketing"]').checked;
+        }
+        localStorage.setItem(key, JSON.stringify(payload));
+        banner.classList.remove('visible');
+      }
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        banner.classList.remove('visible');
+        return;
+      }
+      banner.classList.add('visible');
+      banner.querySelectorAll('[data-cookie-choice]').forEach(function(button) {
+        button.addEventListener('click', function() {
+          const choice = button.getAttribute('data-cookie-choice');
+          if (choice === 'customise') {
+            banner.classList.toggle('expanded');
+            return;
+          }
+          setConsent(choice);
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function() {
+      const scales = [0.875, 1, 1.125, 1.25];
+      const settings = document.querySelector('.text-settings');
+      if (!settings) return;
+      const output = settings.querySelector('output');
+      const decrease = settings.querySelector('[data-text-size="decrease"]');
+      const increase = settings.querySelector('[data-text-size="increase"]');
+      const key = 'unstolic_text_scale';
+      let scale = Number(localStorage.getItem(key));
+      if (!scales.includes(scale)) scale = 1;
+      function applyScale(nextScale) {
+        scale = nextScale;
+        document.documentElement.style.fontSize = (scale * 100) + '%';
+        localStorage.setItem(key, String(scale));
+        output.textContent = Math.round(scale * 100) + '%';
+        decrease.disabled = scale === scales[0];
+        increase.disabled = scale === scales[scales.length - 1];
+      }
+      settings.addEventListener('click', function(event) {
+        const button = event.target.closest('[data-text-size]');
+        if (!button) return;
+        const action = button.getAttribute('data-text-size');
+        if (action === 'reset') {
+          applyScale(1);
+        } else {
+          const index = scales.indexOf(scale);
+          applyScale(scales[index + (action === 'increase' ? 1 : -1)]);
+        }
+      });
+      applyScale(scale);
+    })();
+  </script>
+  <script>
+    (function() {
+      const body = document.body;
+      if (!body) return;
+      const startTransition = function() {
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            body.classList.add('page-ready');
+          });
+        });
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startTransition, { once: true });
+      } else {
+        startTransition();
+      }
+      document.querySelectorAll('a[href]').forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') return;
+        const isSameOrigin = !link.href || link.origin === window.location.origin || link.protocol === 'file:';
+        if (!isSameOrigin) return;
+        link.addEventListener('click', function(event) {
+          if (event.defaultPrevented || link.hasAttribute('download')) return;
+          event.preventDefault();
+          body.classList.remove('page-ready');
+          body.classList.add('page-exit');
+          setTimeout(function() {
+            window.location.href = href;
+          }, 180);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

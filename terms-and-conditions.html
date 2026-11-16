@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function() {
+      const scales = [0.875, 1, 1.125, 1.25];
+      const scale = Number(localStorage.getItem('unstolic_text_scale'));
+      if (scales.includes(scale)) document.documentElement.style.fontSize = (scale * 100) + '%';
+    })();
+  </script>
+  <title>Terms & Conditions | Unstolic Resources</title>
+  <meta name="description" content="Terms and conditions for Unstolic Resources Limited, a Kwik-Fit franchisee in Zambia.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    (function() {
+      if (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+      if (location.protocol !== 'https:') {
+        window.location.replace('https://' + location.hostname + location.pathname + location.search + location.hash);
+      }
+    })();
+  </script>
+  <style>
+    :root {
+      --blue: #073b73;
+      --blue-deep: #052d59;
+      --yellow: #ffd21f;
+      --white: #fff;
+      --ink: #12243a;
+      --muted: #627185;
+      --line: #e4eaf0;
+      --blue-soft: #eaf2fa;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      color: var(--ink);
+      background: #f6f9fc;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    body.page-ready { opacity: 1; transform: none; }
+    body.page-exit { opacity: 0; transform: translateY(-12px); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      body { transition: none; opacity: 1; transform: none; }
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1100px, calc(100% - clamp(28px, 6vw, 64px))); margin: auto; }
+    .topbar {
+      background: var(--blue-deep);
+      color: #fff;
+      font-size: .8rem;
+      padding: 8px 0;
+    }
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .topbar strong { color: var(--yellow); }
+    header {
+      background: #fff;
+      border-bottom: 1px solid rgba(7,59,115,.08);
+    }
+    .nav {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .nav-item { position: relative; }
+    .nav-item.dropdown:hover .dropdown-menu,
+    .nav-item.dropdown:focus-within .dropdown-menu {
+      opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    .dropdown-menu {
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      position: absolute; top: calc(100% + 18px); left: 0; min-width: 190px;
+      background: #fff; border: 1px solid var(--line); border-radius: 12px;
+      padding: 10px 0; box-shadow: 0 18px 34px rgba(7,59,115,.12);
+      transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
+    }
+    .dropdown-menu a {
+      display: block; padding: 10px 18px; color: var(--ink); font-weight: 700;
+    }
+    .dropdown-menu a:hover { background: var(--blue-soft); color: var(--blue); }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px 12px 12px 3px;
+      background: var(--yellow);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .brand-mark img { width: 165%; height: 165%; max-width: none; object-fit: cover; }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .67rem;
+      letter-spacing: .12em;
+      margin-top: 4px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .page-hero {
+      background: linear-gradient(135deg, var(--blue) 0%, #0b4e8f 100%);
+      color: #fff;
+      padding: 60px 0 46px;
+    }
+    .page-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -.04em;
+    }
+    .page-hero p {
+      margin: 0;
+      max-width: 670px;
+      color: rgba(255,255,255,.82);
+      font-size: 1.08rem;
+    }
+    main { padding: clamp(28px, 5vw, 42px) 0 clamp(48px, 8vw, 80px); }
+    .policy-shell {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 30px rgba(7,59,115,.04);
+      padding: clamp(22px, 3.5vw, 36px) clamp(18px, 3vw, 32px);
+    }
+    .policy-shell h2 {
+      color: var(--blue-deep);
+      font-size: 1.5rem;
+      margin: 30px 0 12px;
+      letter-spacing: -.03em;
+    }
+    .policy-shell h2:first-child { margin-top: 0; }
+    .policy-shell p,
+    .policy-shell li {
+      color: var(--ink);
+      font-size: 1rem;
+    }
+    .policy-shell ul {
+      margin: 0 0 0 20px;
+      padding: 0;
+    }
+    .policy-shell a {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+    .muted {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    footer {
+      background: #f5f7fa;
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .cookie-banner {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+      display: none; background: rgba(5,45,89,.96); color: #fff;
+      border-top: 1px solid rgba(255,255,255,.15); box-shadow: 0 -12px 28px rgba(0,0,0,.12);
+    }
+    .cookie-banner.visible { display: block; }
+    .cookie-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      padding: 16px 0;
+    }
+    .cookie-copy { max-width: 780px; }
+    .cookie-copy strong { color: var(--yellow); }
+    .cookie-copy p { margin: 6px 0 0; color: rgba(255,255,255,.8); }
+    .cookie-copy a { color: #fff; text-decoration: underline; }
+    .cookie-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .cookie-options {
+      display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.15);
+    }
+    .cookie-banner.expanded .cookie-options { display: block; }
+    .cookie-option {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 10px; color: rgba(255,255,255,.92); font-weight: 700;
+    }
+    .cookie-option input { accent-color: var(--yellow); width: 16px; height: 16px; }
+    .cookie-option span { color: rgba(255,255,255,.7); font-weight: 500; }
+    .cookie-btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 42px;
+      padding: 0 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: 800;
+    }
+    .cookie-btn.primary { background: var(--yellow); color: var(--blue-deep); }
+    .cookie-btn.secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.25); }
+    .text-settings {
+      position: fixed;
+      top: max(12px, env(safe-area-inset-top));
+      left: max(12px, env(safe-area-inset-left));
+      z-index: 60;
+      color: var(--blue-deep);
+      font: 14px/1.4 Arial, Helvetica, sans-serif;
+    }
+    .text-settings summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 9px 12px;
+      border: 1px solid rgba(7,59,115,.16);
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(5,45,89,.14);
+      font-weight: 800;
+    }
+    .text-settings summary::-webkit-details-marker { display: none; }
+    .text-settings summary:hover, .text-settings summary:focus-visible { background: var(--blue-soft); }
+    .text-settings-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      width: 220px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(5,45,89,.18);
+    }
+    .text-settings-panel p { margin: 0 0 10px; font-weight: 800; }
+    .text-size-controls { display: flex; align-items: center; gap: 8px; }
+    .text-settings button {
+      min-height: 38px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--blue-deep);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+    }
+    .text-settings button:hover:not(:disabled) { background: var(--blue-soft); }
+    .text-settings button:disabled { cursor: not-allowed; opacity: .45; }
+    .text-size-controls output { min-width: 48px; text-align: center; font-weight: 700; }
+    .text-settings .text-size-reset { width: 100%; margin-top: 10px; }
+    @media (max-width: 1360px) { .topbar-inner { padding-left: 132px; } }
+    @media (max-width: 850px) {
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px 0 14px;
+        gap: 12px;
+      }
+      .brand { justify-content: center; }
+      .nav-links { justify-content: center; }
+    }
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 28px, 560px); }
+      .topbar-inner {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 4px;
+      }
+      .topbar-inner span:last-child { display: none; }
+      .nav { min-height: 68px; }
+      .brand {
+        justify-content: center;
+        font-size: .8rem;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+      }
+      .nav-links a { font-size: .82rem; }
+      .brand small { letter-spacing: .08em; }
+      .page-hero { padding: 48px 0 36px; }
+      .page-hero h1 { font-size: clamp(2rem, 12vw, 3rem); }
+      .policy-shell { padding: 24px 18px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .cookie-inner { flex-direction: column; align-items: stretch; }
+      .cookie-actions { width: 100%; }
+      .cookie-btn { flex: 1 1 auto; }
+    }
+  </style>
+</head>
+<body>
+  <details class="text-settings">
+    <summary>Text settings</summary>
+    <div class="text-settings-panel" aria-label="Text size settings">
+      <p>Text size</p>
+      <div class="text-size-controls">
+        <button type="button" data-text-size="decrease" aria-label="Decrease text size">A−</button>
+        <output aria-live="polite" aria-atomic="true">100%</output>
+        <button type="button" data-text-size="increase" aria-label="Increase text size">A+</button>
+      </div>
+      <button class="text-size-reset" type="button" data-text-size="reset">Reset to default</button>
+    </div>
+  </details>
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent banner">
+    <div class="wrap">
+      <div class="cookie-inner">
+        <div class="cookie-copy">
+          <strong>Cookies</strong>
+          <p>We use cookies to improve the site experience and understand how visitors use our website. <a href="privacy-policy.html">Learn more in our Privacy Policy.</a></p>
+        </div>
+        <div class="cookie-actions">
+          <button class="cookie-btn secondary" type="button" data-cookie-choice="customise">Customise</button>
+          <button class="cookie-btn secondary" type="button" data-cookie-choice="reject">Reject</button>
+          <button class="cookie-btn primary" type="button" data-cookie-choice="accept">Accept all</button>
+        </div>
+      </div>
+      <div class="cookie-options">
+        <label class="cookie-option"><input type="checkbox" checked disabled> Necessary <span>Required for the site to work correctly</span></label>
+        <label class="cookie-option"><input type="checkbox" name="analytics"> Analytics <span>Help us understand how visitors use the site</span></label>
+        <label class="cookie-option"><input type="checkbox" name="marketing"> Marketing <span>Used for relevant promotions and campaigns</span></label>
+        <div class="cookie-actions" style="margin-top:12px; justify-content:flex-end;">
+          <button class="cookie-btn primary" type="button" data-cookie-choice="save">Save preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span><strong>UNSTOLIC RESOURCES LIMITED</strong> &nbsp;·&nbsp; Kwik-Fit franchisee in Zambia</span>
+      <span>Automotive care · Maintenance · Supply</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Unstolic Resources home">
+        <span class="brand-mark"><img src="unstolic-logo.png" alt="Unstolic Resources Limited logo"></span>
+        <span>UNSTOLIC<small>RESOURCES LIMITED</small></span>
+      </a>
+      <div class="nav-links">
+        <div class="nav-item dropdown">
+          <a href="index.html">Home</a>
+          <div class="dropdown-menu" aria-label="Home shortcuts">
+            <a href="index.html#services">What we do</a>
+            <a href="index.html#about">About us</a>
+          </div>
+        </div>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms & Conditions</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Terms & Conditions</h1>
+      <p>These terms and conditions govern the use of our services, website and business relationship with Unstolic Resources Limited.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="wrap policy-shell">
+      <p class="muted">Effective date: 16 November 2026</p>
+
+      <h2>1. Introduction</h2>
+      <p>Unstolic Resources Limited, operating as a Kwik-Fit franchisee in Zambia, provides automotive care, maintenance, fleet servicing, supply and related services. These Terms and Conditions apply to all services, quotations, bookings, purchases and website interactions offered by us.</p>
+      <p>By engaging our services, visiting our premises, requesting a quote, or using our website, you agree to be bound by these Terms and Conditions.</p>
+
+      <h2>2. Scope of services</h2>
+      <p>We provide a range of automotive and fleet-related services, including but not limited to maintenance, repair, diagnostics, supply, inspection and operational support for private and commercial clients.</p>
+      <p>Service scope, expected outcomes, timeframes and any additional requirements will be communicated to you before work begins. In some cases, a quotation may be provided and accepted before work is carried out.</p>
+
+      <h2>3. Booking, estimates and quotations</h2>
+      <p>Bookings may be made by phone, email, in person or via our website. A quotation is an estimate based on the information available at the time and is not a guaranteed final price.</p>
+      <p>Additional work discovered during inspection or servicing may require further approval and additional charges. We will communicate any material changes before continuing with the work unless an urgent safety issue requires immediate action.</p>
+
+      <h2>4. Customer responsibilities</h2>
+      <p>Customers are responsible for providing accurate information about the vehicle, service history, use, ownership, operational requirements and any prior issues relevant to the service being requested.</p>
+      <ul>
+        <li>Providing clear instructions and approvals when work is required</li>
+        <li>Ensuring that vehicles are available at agreed times and locations</li>
+        <li>Informing us of any known defects, current faults, or safety concerns</li>
+        <li>Ensuring payment arrangements are finalised as agreed</li>
+      </ul>
+      <p>If a vehicle is brought in under unsafe or unacceptable conditions, we may refuse service until the condition is addressed.</p>
+
+      <h2>5. Payment terms</h2>
+      <p>Payment is due in accordance with the agreed arrangement for the service or supply provided. We may require deposits or upfront payments for certain services, quotations or fleet work.</p>
+      <p>We reserve the right to refuse further service or release of goods until outstanding balances are settled, subject to applicable law and any agreement between the parties.</p>
+
+      <h2>6. Vehicle condition and risk</h2>
+      <p>While we take reasonable care in carrying out all services, vehicle owners are responsible for the condition, safety and fitness of the vehicle presented for work. We are not responsible for pre-existing defects, wear, or issues that are not identified at the time of inspection.</p>
+      <p>If a vehicle is driven, used, or maintained in a way that is unsafe, unsuitable or contrary to manufacturer guidance, we may not be liable for resulting damage, loss or failure.</p>
+
+      <h2>7. Warranties and limitations</h2>
+      <p>We aim to carry out work to a professional standard, but the quality of workmanship and the durability of parts may depend on the condition of the vehicle, the environment in which it is used, and manufacturer recommendations.</p>
+      <p>Unless expressly stated in writing, we do not provide guarantees beyond those required by applicable law. We cannot accept responsibility for damage or failures caused by misuse, neglect, wear and tear, unauthorised alterations, or external factors beyond our control.</p>
+
+      <h2>8. Liability</h2>
+      <p>To the maximum extent permitted by law, Unstolic Resources Limited shall not be liable for indirect, incidental, consequential, or special losses, including loss of business, loss of income, or loss of opportunity, arising from our services or website use.</p>
+      <p>Our liability for any claim arising from our services is limited to the value of the relevant service or supply, except where liability cannot be excluded by applicable law.</p>
+
+      <h2>9. Fleet servicing and management</h2>
+      <p>For fleet clients, service schedules, operating requirements, maintenance records and other obligations may be agreed through separate commercial arrangements. These arrangements may set additional requirements regarding staging, service windows, approvals, documentation and payment.</p>
+      <p>Where a client requests fleet support, the client remains responsible for ensuring that vehicle usage, operational requirements and legal compliance are maintained between scheduled maintenance activities.</p>
+
+      <h2>10. Website use and intellectual property</h2>
+      <p>All content, branding, text, imagery and materials on this website are provided for general informational purposes and are protected by intellectual property rights where applicable. You may not reproduce, republish or commercially use content from this website without prior written approval.</p>
+      <p>The website may be used only for lawful purposes and must not be used to transmit harmful, defamatory, unlawful or misleading material.</p>
+
+      <h2>11. Privacy and data protection</h2>
+      <p>We handle personal data in line with our <a href="privacy-policy.html">Privacy Policy</a>. By engaging with us, you consent to the collection, use and protection of relevant personal information as described in that policy.</p>
+
+      <h2>12. Changes to these terms</h2>
+      <p>We may update these Terms and Conditions from time to time to reflect commercial practice, operational needs or legal requirements. Updated terms will be published on this page with a revised effective date.</p>
+
+      <h2>13. Governing law</h2>
+      <p>These Terms and Conditions are governed by the laws of the Republic of Zambia, and any disputes arising in connection with them shall be subject to the jurisdiction of the courts of Zambia unless otherwise required by law.</p>
+
+      <h2>14. Contact</h2>
+      <p>If you have questions about these Terms and Conditions, please contact us using the details below:</p>
+      <p><strong>Unstolic Resources Limited</strong><br>
+      Kwik-Fit franchisee in Zambia<br>
+      Plot 696 Kalambo Road, Lusaka, Zambia<br>
+      Email: <a href="mailto:sales@unstolic.com">sales@unstolic.com</a><br>
+      Kalambo Road: <a href="tel:+260955938927">0955 938927</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span><strong>Unstolic Resources Limited</strong> &nbsp;·&nbsp; Kwik-Fit franchisee in Zambia</span>
+      <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-and-conditions.html">Terms & Conditions</a></span>
+    </div>
+  </footer>
+  <script>
+    (function() {
+      const key = 'unstolic_cookie_consent';
+      const banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      function setConsent(choice) {
+        const payload = { necessary: true };
+        if (choice === 'accept') {
+          payload.analytics = true;
+          payload.marketing = true;
+        } else if (choice === 'reject') {
+          payload.analytics = false;
+          payload.marketing = false;
+        } else {
+          payload.analytics = !!document.querySelector('[name="analytics"]').checked;
+          payload.marketing = !!document.querySelector('[name="marketing"]').checked;
+        }
+        localStorage.setItem(key, JSON.stringify(payload));
+        banner.classList.remove('visible');
+      }
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        banner.classList.remove('visible');
+        return;
+      }
+      banner.classList.add('visible');
+      banner.querySelectorAll('[data-cookie-choice]').forEach(function(button) {
+        button.addEventListener('click', function() {
+          const choice = button.getAttribute('data-cookie-choice');
+          if (choice === 'customise') {
+            banner.classList.toggle('expanded');
+            return;
+          }
+          setConsent(choice);
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function() {
+      const scales = [0.875, 1, 1.125, 1.25];
+      const settings = document.querySelector('.text-settings');
+      if (!settings) return;
+      const output = settings.querySelector('output');
+      const decrease = settings.querySelector('[data-text-size="decrease"]');
+      const increase = settings.querySelector('[data-text-size="increase"]');
+      const key = 'unstolic_text_scale';
+      let scale = Number(localStorage.getItem(key));
+      if (!scales.includes(scale)) scale = 1;
+      function applyScale(nextScale) {
+        scale = nextScale;
+        document.documentElement.style.fontSize = (scale * 100) + '%';
+        localStorage.setItem(key, String(scale));
+        output.textContent = Math.round(scale * 100) + '%';
+        decrease.disabled = scale === scales[0];
+        increase.disabled = scale === scales[scales.length - 1];
+      }
+      settings.addEventListener('click', function(event) {
+        const button = event.target.closest('[data-text-size]');
+        if (!button) return;
+        const action = button.getAttribute('data-text-size');
+        if (action === 'reset') {
+          applyScale(1);
+        } else {
+          const index = scales.indexOf(scale);
+          applyScale(scales[index + (action === 'increase' ? 1 : -1)]);
+        }
+      });
+      applyScale(scale);
+    })();
+  </script>
+  <script>
+    (function() {
+      const body = document.body;
+      if (!body) return;
+      const startTransition = function() {
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            body.classList.add('page-ready');
+          });
+        });
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startTransition, { once: true });
+      } else {
+        startTransition();
+      }
+      document.querySelectorAll('a[href]').forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') return;
+        const isSameOrigin = !link.href || link.origin === window.location.origin || link.protocol === 'file:';
+        if (!isSameOrigin) return;
+        link.addEventListener('click', function(event) {
+          if (event.defaultPrevented || link.hasAttribute('download')) return;
+          event.preventDefault();
+          body.classList.remove('page-ready');
+          body.classList.add('page-exit');
+          setTimeout(function() {
+            window.location.href = href;
+          }, 180);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
