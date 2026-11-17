@@ -47,6 +47,7 @@
 			--line: #d7e0e8;
 			--neutral: #f3f6f8;
 			--radius: 18px;
+			--focus-color: #073b73;
 		}
 		* { box-sizing: border-box; }
 		html { scroll-behavior: smooth; }
@@ -68,6 +69,11 @@
 			body { transition: none; opacity: 1; transform: none; }
 		}
 		a { color: inherit; text-decoration: none; }
+		:where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible { outline: 3px solid var(--focus-color); outline-offset: 3px; }
+		.skip-link { position: fixed; top: 12px; left: 12px; z-index: 1000; transform: translateY(calc(-100% - 16px)); padding: 10px 16px; border-radius: 4px; background: var(--blue-deep); color: #fff; font-weight: 700; }
+		.skip-link:focus { transform: translateY(0); }
+		main[tabindex="-1"] { scroll-margin-top: 96px; }
+		.hero :focus-visible, .cookie-banner :focus-visible { outline-color: var(--yellow); }
 		.wrap { width: min(1120px, calc(100% - clamp(32px, 6vw, 64px))); margin: auto; }
 		.topbar { background: var(--blue-deep); color: #fff; font-size: .82rem; padding: 8px 0; }
 		.topbar-inner { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
@@ -75,14 +81,15 @@
 		header { background: #fff; position: sticky; top: 0; z-index: 5; border-bottom: 1px solid rgba(7,59,115,.08); }
 		.nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 		.brand { display: flex; align-items: center; gap: 12px; color: var(--blue); font-weight: 800; line-height: 1.1; }
-		.brand-mark { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 12px 12px 12px 3px; background: var(--yellow); color: var(--blue-deep); font-size: 1.25rem; font-weight: 900; overflow: hidden; }
-		.brand-mark img { display: block; width: 165%; height: 165%; max-width: none; object-fit: cover; }
+		.brand-mark { width: 64px; height: 52px; display: grid; place-items: center; border-radius: 12px 12px 12px 3px; background: #fff; color: var(--blue-deep); font-size: 1.25rem; font-weight: 900; overflow: hidden; flex-shrink: 0; }
+		.brand-mark img { display: block; width: 100%; height: 100%; max-width: none; object-fit: contain; }
 		.brand-title { display: inline-block; color: var(--blue); font-size: 1.4rem; letter-spacing: .015em; -webkit-text-stroke: 1px #e6007e; paint-order: stroke fill; text-decoration: underline; text-decoration-color: #16834b; text-decoration-thickness: 2.5px; text-underline-offset: 5px; }
 		.brand small { display: block; color: var(--muted); font-size: .67rem; letter-spacing: .12em; margin-top: 5px; }
 		.nav-links { display: flex; align-items: center; gap: 28px; font-size: .92rem; font-weight: 700; }
 		.nav-item { position: relative; }
 		.nav-item.dropdown:hover .dropdown-menu,
 		.nav-item.dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+		.nav-item.dropdown:focus-within .dropdown-menu { transition: opacity .18s ease, transform .18s ease; }
 		.dropdown-menu {
 			opacity: 0; visibility: hidden; transform: translateY(8px);
 			position: absolute; top: calc(100% + 18px); left: 0; min-width: 190px;
@@ -122,7 +129,7 @@
 			padding-right: .06em;
 		}
 		.hero-inner > div:first-child { position: relative; z-index: 1; }
-		.trust-row { display: flex; flex-wrap: wrap; gap: 0; padding: 22px 0; border-bottom: 1px solid var(--line); }
+		.trust-row { display: flex; flex-wrap: wrap; gap: 0; margin-top: 0; margin-bottom: 0; padding: 22px 0; border-bottom: 1px solid var(--line); list-style: none; }
 		.trust-item { padding: 0 22px; color: var(--blue); font-size: .9rem; font-weight: 800; }
 		.trust-item:first-child { padding-left: 0; }
 		.trust-item + .trust-item { border-left: 1px solid var(--line); }
@@ -158,8 +165,8 @@
 		.branch-phone a, .contact-form > p a { color: var(--blue); font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
 		.about-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 5vw, 65px); align-items: center; }
 		.about-panel { background: var(--blue); min-height: 330px; padding: 35px; border-radius: var(--radius); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; }
-		.about-panel h3, .about-panel p { position: relative; }
-		.about-panel h3 { font-size: 1.8rem; line-height: 1.2; margin: 9px 0; max-width: 310px; }
+		.about-panel h2, .about-panel p { position: relative; }
+		.about-panel h2 { font-size: 1.8rem; line-height: 1.2; margin: 9px 0; max-width: 310px; }
 		.about-panel p { margin: 0; color: rgba(255,255,255,.75); }
 		.about-copy p { color: var(--muted); }
 		.registration { margin-top: 22px; padding: 16px 0; border-top: 1px solid var(--line); color: var(--blue-deep); font-size: .93rem; }
@@ -186,7 +193,7 @@
 			font: inherit;
 		}
 		.contact-field textarea { min-height: 150px; resize: vertical; }
-		.contact-field input:focus-visible, .contact-field textarea:focus-visible { outline: 3px solid rgba(7,59,115,.2); border-color: var(--blue); }
+		.contact-field input:focus-visible, .contact-field textarea:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; border-color: var(--blue); }
 		.contact-form .button { margin-top: 20px; border: 0; cursor: pointer; }
 		@media (max-width: 760px) { .contact-fields { grid-template-columns: 1fr; } .contact-field.full { grid-column: auto; } }
 		footer { background: #f5f7fa; border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: .85rem; }
@@ -276,7 +283,7 @@
 		.theme-setting-track:before { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform .18s; }
 		.theme-setting input:checked + .theme-setting-track { background: var(--blue); }
 		.theme-setting input:checked + .theme-setting-track:before { transform: translateX(18px); }
-		.theme-setting input:focus-visible + .theme-setting-track { outline: 3px solid rgba(255,210,31,.7); outline-offset: 2px; }
+		.theme-setting input:focus-visible + .theme-setting-track { outline: 3px solid var(--focus-color); outline-offset: 2px; }
 		:root[data-theme="dark"] {
 			color-scheme: dark;
 			--white: #101821;
@@ -285,6 +292,7 @@
 			--line: #2e3d4d;
 			--blue-soft: #1d3043;
 			--neutral: #121c27;
+			--focus-color: #ffd21f;
 		}
 		:root[data-theme="dark"] header,
 		:root[data-theme="dark"] .dropdown-menu,
@@ -349,7 +357,7 @@
 				justify-content: center;
 				font-size: .78rem;
 			}
-			.brand-mark { width: 44px; height: 44px; }
+			.brand-mark { width: 54px; height: 44px; }
 			.brand-title { font-size: 1.2rem; }
 			.brand small { letter-spacing: .08em; font-size: .54rem; }
 			.nav-links {
@@ -410,9 +418,10 @@
 	</script>
 </head>
 <body>
+	<a class="skip-link" href="#main-content">Skip to main content</a>
 	<details class="text-settings">
 		<summary>Text settings</summary>
-		<div class="text-settings-panel" aria-label="Text and display settings">
+		<div class="text-settings-panel" role="group" aria-label="Text and display settings">
 			<p>Text size</p>
 			<div class="text-size-controls">
 				<button type="button" data-text-size="decrease" aria-label="Decrease text size">A−</button>
@@ -423,20 +432,20 @@
 			<label class="theme-setting"><span>Dark mode</span><input type="checkbox" data-theme-toggle role="switch" aria-label="Dark mode"><span class="theme-setting-track" aria-hidden="true"></span></label>
 		</div>
 	</details>
-	<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent banner">
+	<div id="cookie-banner" class="cookie-banner" role="region" aria-live="polite" aria-labelledby="cookie-heading" aria-describedby="cookie-description">
 		<div class="wrap">
 			<div class="cookie-inner">
 				<div class="cookie-copy">
-					<strong>Cookies</strong>
-					<p>We use cookies to improve the site experience and understand how visitors use our website. <a href="privacy-policy.html">Learn more in our Privacy Policy.</a></p>
+					<strong id="cookie-heading">Cookies</strong>
+					<p id="cookie-description">We use cookies to improve the site experience and understand how visitors use our website. <a href="privacy-policy.html">Learn more in our Privacy Policy.</a></p>
 				</div>
 				<div class="cookie-actions">
-					<button class="cookie-btn secondary" type="button" data-cookie-choice="customise">Customise</button>
+					<button class="cookie-btn secondary" type="button" data-cookie-choice="customise" aria-expanded="false" aria-controls="cookie-options">Customise</button>
 					<button class="cookie-btn secondary" type="button" data-cookie-choice="reject">Reject</button>
 					<button class="cookie-btn primary" type="button" data-cookie-choice="accept">Accept all</button>
 				</div>
 			</div>
-			<div class="cookie-options">
+			<div class="cookie-options" id="cookie-options">
 				<label class="cookie-option"><input type="checkbox" checked disabled> Necessary <span>Required for the site to work correctly</span></label>
 				<label class="cookie-option"><input type="checkbox" name="analytics"> Analytics <span>Help us understand how visitors use the site</span></label>
 				<label class="cookie-option"><input type="checkbox" name="marketing"> Marketing <span>Used for relevant promotions and campaigns</span></label>
@@ -449,11 +458,11 @@
 	<div class="topbar"><div class="wrap topbar-inner"><span><strong>Kwik-Fit</strong> franchisee in Zambia</span><span>Motor services · Tyres · Automotive parts</span></div></div>
 	<header>
 		<nav class="wrap nav" aria-label="Main navigation">
-			<a class="brand" href="#home" aria-label="Unstolic Resources home"><span class="brand-mark"><img src="unstolic-logo.png" alt="Unstolic Resources Limited logo"></span><span><span class="brand-title">UNSTOLIC</span><small>RESOURCES LIMITED</small></span></a>
+			<a class="brand" href="#home" aria-label="Unstolic Resources home"><span class="brand-mark"><img src="unstolic-logo.png" alt="Blue URL logo mark"></span><span><span class="brand-title">UNSTOLIC</span><small>RESOURCES LIMITED</small></span></a>
 			<div class="nav-links">
 				<div class="nav-item dropdown">
 					<a href="#home">Home</a>
-					<div class="dropdown-menu" aria-label="Home shortcuts">
+					<div class="dropdown-menu" role="group" aria-label="Home shortcuts">
 						<a href="#services">What we do</a>
 						<a href="#car-health">Car health</a>
 						<a href="#about">About us</a>
@@ -466,25 +475,25 @@
 			</div>
 		</nav>
 	</header>
-	<main>
-		<section class="hero" id="home">
+	<main id="main-content" tabindex="-1">
+		<section class="hero" id="home" aria-labelledby="hero-heading">
 			<div class="wrap hero-inner">
 				<div>
-					<h1>Vehicle servicing in Zambia.</h1>
+					<h1 id="hero-heading">Vehicle servicing in Zambia.</h1>
 					<p>Unstolic Resources Limited is a Kwik-Fit franchisee in Zambia. Our team provides vehicle maintenance, mechanical repairs and cosmetic work.</p>
-					<div class="hero-actions"><a class="button" href="#services">Explore our services</a><a class="button outline" href="https://kwikfit.africa/" target="_blank" rel="noopener noreferrer">Visit Kwik-Fit Africa ↗</a></div>
+					<div class="hero-actions"><a class="button" href="#services">Explore our services</a><a class="button outline" href="https://kwikfit.africa/" target="_blank" rel="noopener noreferrer">Visit Kwik-Fit Africa <span aria-hidden="true">↗</span></a></div>
 				</div>
 				<div class="hero-art" aria-hidden="true"><span class="hero-monogram">URL</span></div>
 			</div>
 		</section>
-		<div class="wrap trust-row" aria-label="Company highlights">
-			<div class="trust-item">Registered Zambian company</div>
-			<div class="trust-item">Kwik-Fit franchisee</div>
-			<div class="trust-item">Automotive care and supply</div>
-		</div>
-		<section id="about">
+		<ul class="wrap trust-row" aria-label="Company highlights">
+			<li class="trust-item">Registered Zambian company</li>
+			<li class="trust-item">Kwik-Fit franchisee</li>
+			<li class="trust-item">Automotive care and supply</li>
+		</ul>
+		<section id="about" aria-labelledby="about-heading">
 			<div class="wrap about-grid">
-				<div class="about-panel"><h3>Local service, supported by Kwik-Fit.</h3><p>Unstolic Resources Limited serves motorists in Lusaka and Chipata.</p></div>
+				<div class="about-panel"><h2 id="about-heading">Local service, supported by Kwik-Fit.</h2><p>Unstolic Resources Limited serves motorists in Lusaka and Chipata.</p></div>
 				<div class="about-copy"><h2>A Zambian automotive service company.</h2><p>Unstolic Resources is a registered Kwik-Fit franchisee providing vehicle maintenance, mechanical repairs, cosmetic work and fleet support.</p><p>Our team combines local service with the Kwik-Fit automotive brand.</p><div class="registration"><strong>Company registration</strong>PACRA Registration No. 120110098058</div></div>
 			</div>
 		</section>
@@ -499,17 +508,17 @@
 				</div>
 			</div>
 		</section>
-		<div class="wrap hours-panel" aria-label="Opening hours">
-			<div class="eyebrow">Opening hours</div>
+		<div class="wrap hours-panel" role="region" aria-labelledby="hours-heading">
+			<h2 class="eyebrow" id="hours-heading">Opening hours</h2>
 			<ul class="hours-list">
 				<li><span>Monday–Friday</span><span>7:30 AM – 5:00 PM</span></li>
 				<li><span>Saturday</span><span>8:30 AM – 1:00 PM</span></li>
 				<li><span>Holidays</span><span>Closed</span></li>
 			</ul>
 		</div>
-		<section class="services" id="services">
+		<section class="services" id="services" aria-labelledby="services-heading">
 			<div class="wrap">
-				<div class="section-heading"><div class="eyebrow">What we do</div><h2>Vehicle servicing, tyres and fleet support.</h2><p>Maintenance and repairs for private vehicles, alongside servicing support for commercial fleets.</p></div>
+				<div class="section-heading"><div class="eyebrow">What we do</div><h2 id="services-heading">Vehicle servicing, tyres and fleet support.</h2><p>Maintenance and repairs for private vehicles, alongside servicing support for commercial fleets.</p></div>
 				<div class="service-list">
 					<article class="service-row"><h3>Automotive care</h3><p>Routine engine maintenance, mechanical repairs and cosmetic work.</p></article>
 					<article class="service-row"><h3>Fleet servicing &amp; management</h3><p>Maintenance planning and servicing support for commercial vehicles.</p></article>
@@ -541,14 +550,14 @@
 				<aside class="health-note"><h3>Vehicle checks and servicing</h3><p>Visit a branch for engine service and automotive products. Ask our team about fitment, inspections and current offers.</p></aside>
 				</div>
 		</section>
-		<section class="cta" id="contact">
+		<section class="cta" id="contact" aria-labelledby="contact-section-heading">
 			<div class="wrap">
-				<div class="cta-box"><div><h2>Need vehicle servicing?</h2><p>Contact our team or visit Kwik-Fit Africa for information about the wider brand.</p></div><a class="button" href="https://kwikfit.africa/" target="_blank" rel="noopener noreferrer">Visit Kwik-Fit Africa ↗</a></div>
-				<form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+				<div class="cta-box"><div><h2 id="contact-section-heading">Need vehicle servicing?</h2><p>Contact our team or visit Kwik-Fit Africa for information about the wider brand.</p></div><a class="button" href="https://kwikfit.africa/" target="_blank" rel="noopener noreferrer">Visit Kwik-Fit Africa <span aria-hidden="true">↗</span></a></div>
+				<form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-labelledby="contact-heading" aria-describedby="contact-description">
 					<input type="hidden" name="form-name" value="contact">
 					<p hidden><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-					<h3>Send us a message</h3>
-					<p>Complete the fields below and our team will get back to you. You can also email <a href="mailto:sales@unstolic.com">sales@unstolic.com</a>.</p>
+					<h3 id="contact-heading">Send us a message</h3>
+					<p id="contact-description">Complete the fields below and our team will get back to you. You can also email <a href="mailto:sales@unstolic.com">sales@unstolic.com</a>.</p>
 					<div class="contact-fields">
 						<div class="contact-field">
 							<label for="contact-name">Name</label>
@@ -589,6 +598,7 @@
 				localStorage.setItem(key, JSON.stringify(payload));
 				if (payload.analytics && window.unstolicLoadClarity) window.unstolicLoadClarity();
 				banner.classList.remove('visible');
+				document.getElementById('main-content').focus();
 			}
 			const saved = localStorage.getItem(key);
 			if (saved) {
@@ -600,7 +610,8 @@
 				button.addEventListener('click', function() {
 					const choice = button.getAttribute('data-cookie-choice');
 					if (choice === 'customise') {
-						banner.classList.toggle('expanded');
+						const expanded = banner.classList.toggle('expanded');
+						button.setAttribute('aria-expanded', String(expanded));
 						return;
 					}
 					setConsent(choice);
