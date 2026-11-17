@@ -366,6 +366,28 @@
     :root[data-theme="dark"] .topbar,
     :root[data-theme="dark"] .page-hero { background: var(--blue-deep); }
   </style>
+  <script>
+    (function(w, d) {
+      w.unstolicLoadClarity = function() {
+        if (d.getElementById('clarity-tag')) return;
+        (function(c, l, a, r, i, t, y) {
+          c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+          t = l.createElement(r);
+          t.async = true;
+          t.id = 'clarity-tag';
+          t.src = 'https://www.clarity.ms/tag/' + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(w, d, 'clarity', 'script', 'zez3cy3333');
+      };
+      try {
+        var consent = JSON.parse(w.localStorage.getItem('unstolic_cookie_consent') || 'null');
+        if (consent && consent.analytics === true) w.unstolicLoadClarity();
+      } catch (error) {
+        console.warn('Could not read cookie consent; Microsoft Clarity remains disabled.', error);
+      }
+    })(window, document);
+  </script>
 </head>
 <body>
   <details class="text-settings">
@@ -531,6 +553,7 @@
           payload.marketing = !!document.querySelector('[name="marketing"]').checked;
         }
         localStorage.setItem(key, JSON.stringify(payload));
+        if (payload.analytics && window.unstolicLoadClarity) window.unstolicLoadClarity();
         banner.classList.remove('visible');
       }
       const saved = localStorage.getItem(key);
