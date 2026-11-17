@@ -110,25 +110,17 @@
 			position: relative;
 			overflow: hidden;
 			color: #fff;
-			background: var(--blue);
+			background-color: var(--blue);
+			background-image: linear-gradient(90deg, rgba(5,45,89,.92), rgba(5,45,89,.72)), url("images/workshop-frontage.jpg");
+			background-position: center top;
+			background-size: cover;
 		}
-		.hero-inner { position: relative; z-index: 1; min-height: 525px; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 46px; padding-top: 58px; padding-bottom: 70px; }
+		.hero-inner { min-height: 525px; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 46px; padding-top: 58px; padding-bottom: 70px; }
 		.eyebrow { color: var(--yellow); text-transform: uppercase; letter-spacing: .12em; font-weight: 800; font-size: .76rem; }
 		h1 { font-size: clamp(2.6rem, 5vw, 4.65rem); line-height: 1.04; letter-spacing: -.045em; margin: 17px 0 20px; max-width: 700px; }
 		.hero p { color: rgba(255,255,255,.82); max-width: 570px; font-size: 1.08rem; margin: 0 0 29px; }
 		.hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
 		.hero .button.outline { color: #fff; border: 1px solid rgba(255,255,255,.42); background: transparent; }
-		.hero-art { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; pointer-events: none; z-index: 0; }
-		.hero-monogram {
-			white-space: nowrap;
-			color: #0a427b;
-			font-size: clamp(8rem, 54vw, 48rem);
-			font-weight: 900;
-			letter-spacing: -.06em;
-			line-height: .8;
-			padding-right: .06em;
-		}
-		.hero-inner > div:first-child { position: relative; z-index: 1; }
 		.trust-row { display: flex; flex-wrap: wrap; gap: 0; margin-top: 0; margin-bottom: 0; padding: 22px 0; border-bottom: 1px solid var(--line); list-style: none; }
 		.trust-item { padding: 0 22px; color: var(--blue); font-size: .9rem; font-weight: 800; }
 		.trust-item:first-child { padding-left: 0; }
@@ -143,30 +135,53 @@
 		.section-heading .eyebrow { color: var(--blue); }
 		h2 { color: var(--blue-deep); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.12; letter-spacing: -.035em; margin: 10px 0 13px; }
 		.section-heading p { color: var(--muted); margin: 0; }
-		.services { background: var(--neutral); }
+		.services {
+			background-color: var(--neutral);
+			background-image: linear-gradient(rgba(243,246,248,.9), rgba(243,246,248,.9)), url("images/car-on-lift.jpg");
+			background-position: center;
+			background-size: cover;
+		}
 		.car-health { background: var(--white); }
 		.service-list { border-top: 1px solid var(--line); }
 		.service-row { display: grid; grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr); gap: 32px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+		.photo-point { --photo-overlay: rgba(255,255,255,.86); background-color: var(--white); background-image: linear-gradient(var(--photo-overlay), var(--photo-overlay)), var(--item-photo); background-position: center; background-size: cover; }
+		.service-row.photo-point { padding-right: 18px; padding-left: 18px; }
+		.service-row.automotive-care { --item-photo: url("images/engine-inspection.jpg"); }
+		.service-row.fleet-support { --item-photo: url("images/heavy-vehicle-workshop.jpg"); }
+		.service-row.tyre-parts { --item-photo: url("images/heavy-tyre-service.jpg"); }
 		.service-row h3, .care-item h3, .branch-row h3 { margin: 0; color: var(--blue-deep); font-size: 1.2rem; }
 		.service-row p, .care-item p { margin: 0; color: var(--muted); }
+		.work-gallery { background: var(--neutral); }
+		.gallery-group + .gallery-group { margin-top: 42px; }
+		.gallery-group h3 { margin: 0 0 18px; color: var(--blue-deep); font-size: 1.35rem; }
+		.photo-gallery { columns: 3 230px; column-gap: 22px; }
+		.photo-gallery figure { break-inside: avoid; margin: 0 0 18px; }
+		.photo-gallery img { display: block; width: 100%; height: auto; border-radius: 10px; }
 		.health-block + .health-block { margin-top: 44px; }
 		.health-block-heading { margin-bottom: 20px; }
 		.health-block-heading h3 { margin: 0 0 8px; color: var(--blue-deep); font-size: clamp(1.45rem, 2.4vw, 2rem); }
 		.health-block-heading p { margin: 0; color: var(--muted); }
 		.care-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 38px; }
 		.care-item { padding: 18px 0; border-top: 1px solid var(--line); }
+		.care-item.photo-point { margin-top: 10px; padding: 18px; border-top: 0; border-bottom: 1px solid var(--line); }
+		.care-item.engine-photo { --item-photo: url("images/car-inspection.jpg"); }
+		.care-item.schedule-photo { --item-photo: url("images/technicians-at-lift.jpg"); }
+		.care-item.tyre-photo { --item-photo: url("images/tyre-fitting.jpg"); }
+		.care-item.alignment-photo { --item-photo: url("images/car-on-lift.jpg"); }
 		.care-item h3 { margin-bottom: 6px; }
 		.health-note { margin-top: 34px; padding: 22px 0 0; border-top: 1px solid var(--line); color: var(--ink); }
 		.health-note h3 { margin: 0 0 6px; color: var(--blue-deep); font-size: 1.25rem; }
 		.health-note p { margin: 0; color: var(--muted); }
 		.branch-list { border-top: 1px solid var(--line); }
+		.location-photo { max-width: 860px; margin: 0 0 28px; }
+		.location-photo img { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; object-fit: cover; object-position: center 26%; }
 		.branch-row { display: grid; grid-template-columns: minmax(180px, 1fr) max-content; align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
 		.branch-row address { margin-top: 4px; color: var(--muted); font-style: normal; }
 		.branch-phone a, .contact-form > p a { color: var(--blue); font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
 		.about-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 5vw, 65px); align-items: center; }
-		.about-panel { background: var(--blue); min-height: 330px; padding: 35px; border-radius: var(--radius); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; }
+		.about-panel { background-color: var(--blue); background-image: linear-gradient(180deg, rgba(5,45,89,.62), rgba(5,45,89,.94)), url("images/workshop-team.jpg"); background-position: center; background-size: cover; min-height: 330px; padding: 35px; border-radius: var(--radius); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; }
 		.about-panel h2, .about-panel p { position: relative; }
-		.about-panel h2 { font-size: 1.8rem; line-height: 1.2; margin: 9px 0; max-width: 310px; }
+		.about-panel h2 { color: #fff; font-size: 1.8rem; line-height: 1.2; margin: 9px 0; max-width: 310px; }
 		.about-panel p { margin: 0; color: rgba(255,255,255,.75); }
 		.about-copy p { color: var(--muted); }
 		.registration { margin-top: 22px; padding: 16px 0; border-top: 1px solid var(--line); color: var(--blue-deep); font-size: .93rem; }
@@ -305,6 +320,8 @@
 		:root[data-theme="dark"] .services,
 		:root[data-theme="dark"] .car-health,
 		:root[data-theme="dark"] footer { background-color: #121c27; }
+		:root[data-theme="dark"] .services { background-image: linear-gradient(rgba(18,28,39,.9), rgba(18,28,39,.9)), url("images/car-on-lift.jpg"); }
+		:root[data-theme="dark"] .photo-point { --photo-overlay: rgba(18,28,39,.86); }
 		:root[data-theme="dark"] .text-settings,
 		:root[data-theme="dark"] .text-settings button { color: var(--ink); }
 		:root[data-theme="dark"] .brand,
@@ -317,6 +334,7 @@
 		:root[data-theme="dark"] h2,
 		:root[data-theme="dark"] .service-row h3,
 		:root[data-theme="dark"] .care-item h3,
+		:root[data-theme="dark"] .gallery-group h3,
 		:root[data-theme="dark"] .branch-row h3,
 		:root[data-theme="dark"] .health-block-heading h3,
 		:root[data-theme="dark"] .health-note h3,
@@ -332,7 +350,6 @@
 		@media (max-width: 1360px) { .topbar-inner { padding-left: 132px; } }
 		@media (max-width: 900px) {
 			.hero-inner { grid-template-columns: 1fr; gap: 10px; padding: 58px 0 46px; }
-			.hero-art { min-height: clamp(220px, 38vw, 300px); }
 			.about-grid { grid-template-columns: 1fr; gap: 32px; }
 			.cta-box { padding: 36px; align-items: flex-start; flex-direction: column; }
 		}
@@ -368,9 +385,9 @@
 			}
 			.nav-links a:not(.button) { font-size: .82rem; }
 			.nav-links .button { min-height: 42px; padding: 0 14px; font-size: .85rem; }
+			.photo-gallery { columns: 2 145px; column-gap: 14px; }
 			.hero-actions { flex-direction: column; }
 			.hero .button, .hero .button.outline { width: 100%; }
-			.hero-art { min-height: 265px; }
 			.trust-row { display: grid; grid-template-columns: 1fr; gap: 0; }
 			.trust-item { padding: 10px 0; }
 			.trust-item + .trust-item { border-left: 0; border-top: 1px solid var(--line); }
@@ -464,6 +481,7 @@
 					<a href="#home">Home</a>
 					<div class="dropdown-menu" role="group" aria-label="Home shortcuts">
 						<a href="#services">What we do</a>
+						<a href="#team-and-workshop">Our team &amp; workshop</a>
 						<a href="#car-health">Car health</a>
 						<a href="#about">About us</a>
 						<a href="#locations">Locations</a>
@@ -483,7 +501,6 @@
 					<p>Unstolic Resources Limited is a Kwik-Fit franchisee in Zambia. Our team provides vehicle maintenance, mechanical repairs and cosmetic work.</p>
 					<div class="hero-actions"><a class="button" href="#services">Explore our services</a><a class="button outline" href="https://kwikfit.africa/" target="_blank" rel="noopener noreferrer">Visit Kwik-Fit Africa <span aria-hidden="true">↗</span></a></div>
 				</div>
-				<div class="hero-art" aria-hidden="true"><span class="hero-monogram">URL</span></div>
 			</div>
 		</section>
 		<ul class="wrap trust-row" aria-label="Company highlights">
@@ -500,6 +517,7 @@
 		<section class="locations" id="locations" aria-labelledby="locations-heading">
 			<div class="wrap">
 				<div class="section-heading"><div class="eyebrow">Find a branch</div><h2 id="locations-heading">Visit or call us.</h2><p>Contact a branch for vehicle servicing and support.</p></div>
+				<figure class="location-photo"><img src="images/workshop-frontage.jpg" alt="Unstolic Resources Limited and Kwik-Fit signage above the workshop" loading="lazy" decoding="async"></figure>
 				<div class="branch-list">
 					<article class="branch-row"><div><h3>Kalambo Road</h3><address>Plot 696 Kalambo Road, Lusaka</address></div><p class="branch-phone"><a href="tel:+260955938927">0955 938927</a></p></article>
 					<article class="branch-row"><h3>Manda Hill</h3><p class="branch-phone"><a href="tel:+260953978310">0953 978310</a></p></article>
@@ -520,9 +538,37 @@
 			<div class="wrap">
 				<div class="section-heading"><div class="eyebrow">What we do</div><h2 id="services-heading">Vehicle servicing, tyres and fleet support.</h2><p>Maintenance and repairs for private vehicles, alongside servicing support for commercial fleets.</p></div>
 				<div class="service-list">
-					<article class="service-row"><h3>Automotive care</h3><p>Routine engine maintenance, mechanical repairs and cosmetic work.</p></article>
-					<article class="service-row"><h3>Fleet servicing &amp; management</h3><p>Maintenance planning and servicing support for commercial vehicles.</p></article>
-					<article class="service-row"><h3>Tyres, batteries &amp; parts</h3><p>Automotive products, tyre fitting and battery installation.</p></article>
+					<article class="service-row photo-point automotive-care"><h3>Automotive care</h3><p>Routine engine maintenance, mechanical repairs and cosmetic work.</p></article>
+					<article class="service-row photo-point fleet-support"><h3>Fleet servicing &amp; management</h3><p>Maintenance planning and servicing support for commercial vehicles.</p></article>
+					<article class="service-row photo-point tyre-parts"><h3>Tyres, batteries &amp; parts</h3><p>Automotive products, tyre fitting and battery installation.</p></article>
+				</div>
+			</div>
+		</section>
+		<section class="work-gallery" id="team-and-workshop" aria-labelledby="gallery-heading">
+			<div class="wrap">
+				<div class="section-heading"><div class="eyebrow">Our people and our work</div><h2 id="gallery-heading">Our team and workshops.</h2><p>Meet the people behind our service and see some of the vehicles, equipment and maintenance work at our workshops.</p></div>
+				<div class="gallery-group" aria-labelledby="team-gallery-heading">
+					<h3 id="team-gallery-heading">Our team</h3>
+					<div class="photo-gallery">
+						<figure><img src="images/team-blue-uniforms.jpg" alt="Six team members in blue and white uniforms at a workshop entrance" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/high-visibility-team.jpg" alt="Four workshop technicians wearing high-visibility vests" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/office-team.jpg" alt="Unstolic team members together in their office" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/service-centre-team.jpg" alt="Colleagues standing together outside a vehicle service bay" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/workshop-team-outside.jpg" alt="Team members in workwear gathered at a workshop entrance" loading="lazy" decoding="async"></figure>
+					</div>
+				</div>
+				<div class="gallery-group" aria-labelledby="service-gallery-heading">
+					<h3 id="service-gallery-heading">Workshop services</h3>
+					<div class="photo-gallery">
+						<figure><img src="images/heavy-vehicle-workshop.jpg" alt="Technicians seated beside a heavy vehicle in a service bay" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/heavy-tyre-service.jpg" alt="Technicians inspecting a large vehicle tyre with workshop equipment" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/technicians-at-lift.jpg" alt="Technicians working beside a vehicle service lift" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/pickup-on-lift.jpg" alt="A pickup truck raised on a workshop lift" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/car-inspection.jpg" alt="A technician inspecting a car raised on a lift" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/tyre-fitting.jpg" alt="A technician using a tyre-changing machine" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/engine-inspection.jpg" alt="A mechanic inspecting a car's open engine bay" loading="lazy" decoding="async"></figure>
+						<figure><img src="images/brake-service.jpg" alt="A technician servicing a car's wheel and brake" loading="lazy" decoding="async"></figure>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -532,19 +578,19 @@
 				<div class="health-block">
 					<div class="health-block-heading"><h3 id="maintenance-heading">Practical engine care</h3><p>Use your owner's manual for vehicle-specific guidance and service intervals.</p></div>
 					<div class="care-list">
-						<article class="care-item"><h3>Check your oil</h3><p>Check oil at the intervals in your owner's manual, and use the recommended oil grade and level.</p></article>
+						<article class="care-item photo-point engine-photo"><h3>Check your oil</h3><p>Check oil at the intervals in your owner's manual, and use the recommended oil grade and level.</p></article>
 						<article class="care-item"><h3>Watch the temperature</h3><p>If the temperature rises or a warning light appears, pull over safely and arrange an inspection.</p></article>
 						<article class="care-item"><h3>Choose suitable fuel</h3><p>Use good-quality fuel that meets your vehicle manufacturer's recommendations.</p></article>
 						<article class="care-item"><h3>Notice unusual sounds</h3><p>Have new or unusual engine noises checked promptly by a qualified technician.</p></article>
-						<article class="care-item"><h3>Service on schedule</h3><p>Follow the manufacturer's service schedule to identify maintenance needs early.</p></article>
+						<article class="care-item photo-point schedule-photo"><h3>Service on schedule</h3><p>Follow the manufacturer's service schedule to identify maintenance needs early.</p></article>
 					</div>
 				</div>
 				<div class="health-block">
 					<div class="health-block-heading"><h3 id="tyres-batteries-heading">Tyres, batteries & wheel alignment</h3><p>Well-maintained tyres, a dependable battery and correctly aligned wheels all contribute to a better driving experience.</p></div>
 					<div class="care-list">
-						<article class="care-item"><h3>Tyres</h3><p>Ask our team about tyres selected for grip and durability, and professional fitting.</p></article>
+						<article class="care-item photo-point tyre-photo"><h3>Tyres</h3><p>Ask our team about tyres selected for grip and durability, and professional fitting.</p></article>
 						<article class="care-item"><h3>Batteries</h3><p>Quality batteries and installation are available at our branches.</p></article>
-						<article class="care-item"><h3>Wheel alignment</h3><p>Correct alignment can improve handling, extend tyre life and support fuel efficiency.</p></article>
+						<article class="care-item photo-point alignment-photo"><h3>Wheel alignment</h3><p>Correct alignment can improve handling, extend tyre life and support fuel efficiency.</p></article>
 					</div>
 				</div>
 				<aside class="health-note"><h3>Vehicle checks and servicing</h3><p>Visit a branch for engine service and automotive products. Ask our team about fitment, inspections and current offers.</p></aside>
