@@ -194,6 +194,8 @@
 		.contact-form { margin-top: 24px; padding: clamp(24px, 5vw, 40px); border: 1px solid var(--line); border-radius: 12px; background: #fff; }
 		.contact-form h3 { margin: 0 0 6px; color: var(--blue-deep); font-size: 1.5rem; }
 		.contact-form > p { margin: 0 0 22px; color: var(--muted); }
+		.contact-form .form-status { margin: 0 0 18px; padding: 12px 14px; border-left: 3px solid var(--blue); background: var(--blue-soft); color: var(--ink); }
+		.contact-form .form-status[hidden] { display: none; }
 		.contact-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 		.contact-field { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
 		.contact-field.full { grid-column: 1 / -1; }
@@ -600,11 +602,11 @@
 		<section class="cta" id="contact" aria-labelledby="contact-section-heading">
 			<div class="wrap">
 				<div class="cta-box"><div><h2 id="contact-section-heading">Need vehicle servicing?</h2><p>Contact our team or visit Kwik-Fit Africa for information about the wider brand.</p></div><a class="button" href="https://kwikfit.africa/" target="_blank" rel="noopener noreferrer">Visit Kwik-Fit Africa <span aria-hidden="true">↗</span></a></div>
-				<form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-labelledby="contact-heading" aria-describedby="contact-description">
-					<input type="hidden" name="form-name" value="contact">
+				<form class="contact-form" name="contact" method="POST" action="/api/contact" aria-labelledby="contact-heading" aria-describedby="contact-description">
 					<p hidden><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 					<h3 id="contact-heading">Send us a message</h3>
 					<p id="contact-description">Complete the fields below and our team will get back to you. You can also email <a href="mailto:sales@unstolic.com">sales@unstolic.com</a>.</p>
+					<p class="form-status" data-form-status role="status" aria-live="polite" hidden></p>
 					<div class="contact-fields">
 						<div class="contact-field">
 							<label for="contact-name">Name</label>
@@ -625,6 +627,85 @@
 		</section>
 	</main>
 	<footer><div class="wrap footer-inner"><span><strong>Unstolic Resources Limited</strong> &nbsp;·&nbsp; Kwik-Fit franchisee in Zambia</span><span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-and-conditions.html">Terms & Conditions</a> · PACRA Registration No. 120110098058</span></div></footer>
+	<script>
+		(function() {
+			const form = document.querySelector('.contact-form');
+			if (!form) return;
+			const fields = Array.from(form.querySelectorAll('input[name="name"], input[name="email"], textarea[name="message"]'));
+			const controlCharacters = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g;
+			form.noValidate = true;
+			function sanitize(field, finalize) {
+				const original = field.value;
+				let value = original.normalize('NFC').replace(controlCharacters, '');
+				if (field.name === 'message') value = value.replace(/\r\n?/g, '\n');
+				if (finalize) {
+					if (field.name === 'name') value = value.replace(/\s+/g, ' ').trim();
+					else value = value.trim();
+				}
+				if (value === original) return;
+				const selectionStart = field.selectionStart;
+				const selectionEnd = field.selectionEnd;
+				field.value = value;
+				if (!finalize && selectionStart !== null && selectionEnd !== null) {
+					let prefix = original.slice(0, selectionStart).normalize('NFC').replace(controlCharacters, '');
+					let selected = original.slice(selectionStart, selectionEnd).normalize('NFC').replace(controlCharacters, '');
+					if (field.name === 'message') {
+						prefix = prefix.replace(/\r\n?/g, '\n');
+						selected = selected.replace(/\r\n?/g, '\n');
+					}
+					field.setSelectionRange(prefix.length, prefix.length + selected.length);
+				}
+			}
+			fields.forEach(function(field) {
+				field.addEventListener('input', function() { sanitize(field, false); });
+				field.addEventListener('blur', function() { sanitize(field, true); });
+			});
+			form.addEventListener('submit', function(event) {
+				fields.forEach(function(field) { sanitize(field, true); });
+				if (!form.checkValidity()) {
+					event.preventDefault();
+					form.reportValidity();
+				}
+			});
+			const status = form.querySelector('[data-form-status]');
+			const submitButton = form.querySelector('[type="submit"]');
+			form.addEventListener('submit', async function(event) {
+				event.preventDefault();
+				fields.forEach(function(field) { sanitize(field, true); });
+				if (!form.checkValidity()) {
+					form.reportValidity();
+					return;
+				}
+				status.hidden = false;
+				status.textContent = 'Sending your message…';
+				submitButton.disabled = true;
+				try {
+					const response = await fetch(form.action, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+						body: JSON.stringify({
+							name: form.elements.namedItem('name').value,
+							email: form.elements.namedItem('email').value,
+							message: form.elements.namedItem('message').value,
+							honeypot: form.elements.namedItem('bot-field').value
+						})
+					});
+					const result = await response.json();
+					if (!response.ok) {
+						status.textContent = result.error || 'We could not send your message. Please try again.';
+						return;
+					}
+					status.textContent = 'Thanks. Your message has been sent.';
+					form.reset();
+				} catch (error) {
+					console.error('Contact form submission failed.', error);
+					status.textContent = 'We could not send your message. Please try again or email sales@unstolic.com.';
+				} finally {
+					submitButton.disabled = false;
+				}
+			});
+		})();
+	</script>
 	<script>
 		(function() {
 			const key = 'unstolic_cookie_consent';
