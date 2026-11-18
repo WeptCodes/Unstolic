@@ -167,6 +167,7 @@ export async function onRequest({ request, env }) {
 				body: JSON.stringify({
 					to: RECIPIENT,
 					from: sender,
+					reply_to: email,
 					subject: `Website contact from ${name}`,
 					text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
 				}),
