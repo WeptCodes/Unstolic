@@ -43,6 +43,8 @@
 		const validUntil = promotion.validUntil ?? '';
 		const branches = promotion.branches ?? '';
 		const terms = promotion.terms ?? '';
+		const image = promotion.image ?? '';
+		const imageAlt = promotion.imageAlt ?? '';
 		if (validUntil !== '' && (typeof validUntil !== 'string' || !isValidDate(validUntil))) {
 			throw new TypeError(`Promotion ${index + 1} has an invalid validUntil date.`);
 		}
@@ -52,11 +54,35 @@
 		if (typeof terms !== 'string' || terms.length > 400) {
 			throw new TypeError(`Promotion ${index + 1} has invalid terms.`);
 		}
+		if (typeof image !== 'string' || (image && (
+			!/^images\/[a-z0-9._/-]+\.(?:avif|gif|jpe?g|png|webp)$/i.test(image) ||
+			image.split('/').some(part => !part || part === '.' || part === '..')
+		))) {
+			throw new TypeError(`Promotion ${index + 1} has an invalid image path.`);
+		}
+		if (image && (typeof imageAlt !== 'string' || !imageAlt.trim() || imageAlt.length > 200)) {
+			throw new TypeError(`Promotion ${index + 1} has invalid image alt text.`);
+		}
+		if (!image && imageAlt) {
+			throw new TypeError(`Promotion ${index + 1} has alt text but no image.`);
+		}
 
 		if (validUntil && validUntil < getTodayInLusaka()) return null;
 
 		const card = document.createElement('article');
 		card.className = 'promotion-card';
+		if (image) {
+			const photo = document.createElement('img');
+			photo.src = image;
+			photo.alt = imageAlt.trim();
+			photo.loading = 'lazy';
+			photo.decoding = 'async';
+			photo.addEventListener('error', () => {
+				console.error(`Promotion image could not be loaded: ${image}`);
+				photo.remove();
+			}, { once: true });
+			card.append(photo);
+		}
 		addTextElement(card, 'span', 'promotion-badge', 'Current deal');
 		addTextElement(card, 'h3', '', promotion.title.trim());
 		addTextElement(card, 'p', '', promotion.description.trim());

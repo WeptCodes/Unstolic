@@ -21,8 +21,11 @@ they are not applied when serving the files directly from GitHub Pages.
 ## Posting current deals
 
 Edit `promotions.json` to add or remove offers. Each offer needs a `title` and
-`description`; `validUntil` is an optional `YYYY-MM-DD` date, and `branches`
-and `terms` are optional text. For example:
+`description`; `validUntil` is an optional `YYYY-MM-DD` date, and `branches`,
+`terms`, and `image` are optional. To add a photo, upload it to
+`images/promotions/`, then set `image` to that file's path and provide
+descriptive `imageAlt` text. Supported photo formats are JPG, PNG, WebP, AVIF,
+and GIF. For example:
 
 ```json
 [
@@ -31,14 +34,18 @@ and `terms` are optional text. For example:
     "description": "Describe the promotion and what is included.",
     "validUntil": "2026-12-31",
     "branches": "Lusaka and Chipata",
-    "terms": "Subject to availability."
+    "terms": "Subject to availability.",
+    "image": "images/promotions/offer.jpg",
+    "imageAlt": "Vehicle receiving the promotion's tyre service"
   }
 ]
 ```
 
 Expired offers are hidden automatically using Zambia time. An empty array means
-there are no current offers. Save the changes to GitHub; Cloudflare Pages will
-publish them when its deployment completes.
+there are no current offers. Add the photo and JSON changes to GitHub;
+Cloudflare Pages will publish them when its deployment completes. A local
+`file://` preview cannot fetch the promotions data, so check the deployed or
+Cloudflare Pages preview site.
 
 ## Configure rate limiting
 
