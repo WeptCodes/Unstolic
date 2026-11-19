@@ -145,7 +145,7 @@
 		.promotions { background: var(--neutral); }
 		.promotion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 		.promotion-card { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line); border-top: 4px solid var(--yellow); border-radius: var(--radius); background: var(--white); }
-		.promotion-card img { display: block; width: 100%; aspect-ratio: 16 / 9; margin-bottom: 16px; border-radius: 8px; object-fit: cover; }
+		.promotion-card img { display: block; width: 100%; height: auto; max-height: 480px; margin-bottom: 16px; border-radius: 8px; object-fit: contain; }
 		.promotion-card h3 { margin: 12px 0 8px; color: var(--blue-deep); font-size: 1.3rem; line-height: 1.25; }
 		.promotion-card p { margin: 0; color: var(--muted); }
 		.promotion-badge { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: var(--blue-soft); color: var(--blue); font-size: .78rem; font-weight: 800; }
