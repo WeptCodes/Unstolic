@@ -18,6 +18,28 @@ scripts in an HTML page, update their SHA-256 hashes in `_headers` or the
 browser will block those scripts. These headers are applied by Cloudflare Pages;
 they are not applied when serving the files directly from GitHub Pages.
 
+## Posting current deals
+
+Edit `promotions.json` to add or remove offers. Each offer needs a `title` and
+`description`; `validUntil` is an optional `YYYY-MM-DD` date, and `branches`
+and `terms` are optional text. For example:
+
+```json
+[
+  {
+    "title": "Offer title",
+    "description": "Describe the promotion and what is included.",
+    "validUntil": "2026-12-31",
+    "branches": "Lusaka and Chipata",
+    "terms": "Subject to availability."
+  }
+]
+```
+
+Expired offers are hidden automatically using Zambia time. An empty array means
+there are no current offers. Save the changes to GitHub; Cloudflare Pages will
+publish them when its deployment completes.
+
 ## Configure rate limiting
 
 1. Create a KV namespace in Cloudflare.

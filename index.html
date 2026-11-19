@@ -142,6 +142,15 @@
 			background-position: center;
 			background-size: cover;
 		}
+		.promotions { background: var(--neutral); }
+		.promotion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+		.promotion-card { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line); border-top: 4px solid var(--yellow); border-radius: var(--radius); background: var(--white); }
+		.promotion-card h3 { margin: 12px 0 8px; color: var(--blue-deep); font-size: 1.3rem; line-height: 1.25; }
+		.promotion-card p { margin: 0; color: var(--muted); }
+		.promotion-badge { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: var(--blue-soft); color: var(--blue); font-size: .78rem; font-weight: 800; }
+		.promotion-details { display: grid; gap: 6px; margin-top: 16px; font-size: .9rem; }
+		.promotion-card .button { align-self: flex-start; margin-top: auto; }
+		.promotion-empty { grid-column: 1 / -1; margin: 0; padding: 24px; border: 1px dashed var(--line); border-radius: var(--radius); background: var(--white); color: var(--muted); }
 		.car-health { background: var(--white); }
 		.service-list { border-top: 1px solid var(--line); }
 		.service-row { display: grid; grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr); gap: 32px; padding: 22px 0; border-bottom: 1px solid var(--line); }
@@ -315,6 +324,8 @@
 		:root[data-theme="dark"] header,
 		:root[data-theme="dark"] .dropdown-menu,
 		:root[data-theme="dark"] .contact-form,
+		:root[data-theme="dark"] .promotion-card,
+		:root[data-theme="dark"] .promotion-empty,
 		:root[data-theme="dark"] .text-settings summary,
 		:root[data-theme="dark"] .text-settings-panel,
 		:root[data-theme="dark"] .text-settings button { background-color: #182431; }
@@ -342,6 +353,7 @@
 		:root[data-theme="dark"] .health-block-heading h3,
 		:root[data-theme="dark"] .health-note h3,
 		:root[data-theme="dark"] .contact-form h3,
+		:root[data-theme="dark"] .promotion-card h3,
 		:root[data-theme="dark"] .contact-field label,
 		:root[data-theme="dark"] .registration { color: var(--ink); }
 		:root[data-theme="dark"] .section-heading .eyebrow,
@@ -436,6 +448,7 @@
 			}
 		})(window, document);
 	</script>
+	<script src="promotions.js" defer></script>
 </head>
 <body>
 	<a class="skip-link" href="#main-content">Skip to main content</a>
@@ -484,6 +497,7 @@
 					<a href="#home">Home</a>
 					<div class="dropdown-menu" role="group" aria-label="Home shortcuts">
 						<a href="#services">What we do</a>
+						<a href="#promotions">Promotions &amp; deals</a>
 						<a href="#team-and-workshop">Our team &amp; workshop</a>
 						<a href="#car-health">Car health</a>
 						<a href="#about">About us</a>
@@ -511,6 +525,18 @@
 			<li class="trust-item">Kwik-Fit franchisee</li>
 			<li class="trust-item">Automotive care and supply</li>
 		</ul>
+		<section class="promotions" id="promotions" aria-labelledby="promotions-heading">
+			<div class="wrap">
+				<div class="section-heading">
+					<div class="eyebrow">Promotions &amp; deals</div>
+					<h2 id="promotions-heading">Our latest deals.</h2>
+					<p>Browse current promotions from Unstolic Resources. Each offer includes its details, availability and expiry date.</p>
+				</div>
+				<div class="promotion-grid" data-promotion-list aria-live="polite">
+					<p class="promotion-empty" data-promotion-empty>No active deals are posted right now. Check back soon for the latest promotions.</p>
+				</div>
+			</div>
+		</section>
 		<section id="about" aria-labelledby="about-heading">
 			<div class="wrap about-grid">
 				<div class="about-panel"><h2 id="about-heading">Local service, supported by Kwik-Fit.</h2><p>Unstolic Resources Limited serves motorists in Lusaka and Chipata.</p></div>
